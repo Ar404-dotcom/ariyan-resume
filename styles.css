@@ -1,0 +1,1869 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat fixed;
+    height: 100vh;
+    overflow: hidden;
+    color: #ffffff;
+}
+
+.desktop {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
+}
+
+.desktop.show {
+    opacity: 1;
+}
+
+.desktop-icons {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100px;
+    background: rgba(0, 0, 0, 0.2);
+    height: calc(100vh - 40px);
+    backdrop-filter: blur(10px);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.icon {
+    width: 60px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 8px;
+    transition: all 0.2s;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.icon:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.icon i {
+    font-size: 28px;
+    margin-bottom: 8px;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.icon span {
+    font-size: 11px;
+    text-align: center;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.taskbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 1000;
+}
+
+.start-button {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.start-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.start-button i {
+    font-size: 20px;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.time {
+    margin-left: auto;
+    padding: 0 10px;
+    font-size: 14px;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.window {
+    position: absolute;
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    background: rgba(30, 30, 30, 0.95);
+    border-radius: 10px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    display: none;
+    overflow: hidden;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.window.active {
+    display: block;
+    animation: windowOpen 0.3s ease-out;
+}
+
+@keyframes windowOpen {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -48%) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.window-header {
+    background: rgba(45, 45, 45, 0.95);
+    color: #ffffff;
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: move;
+    user-select: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0 5px;
+    transition: all 0.2s;
+    border-radius: 4px;
+}
+
+.close-btn:hover {
+    background-color: rgba(255, 59, 48, 0.2);
+    color: #ff3b30;
+}
+
+.window-content {
+    padding: 20px;
+    max-height: 70vh;
+    overflow-y: auto;
+    background: rgba(30, 30, 30, 0.95);
+    color: #ffffff;
+}
+
+.file {
+    display: flex;
+    align-items: flex-start;
+    padding: 15px;
+    border-radius: 8px;
+    transition: all 0.2s;
+    margin-bottom: 10px;
+    background: rgba(45, 45, 45, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+}
+
+.file:hover {
+    background-color: rgba(60, 60, 60, 0.9);
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.file i {
+    font-size: 24px;
+    margin-right: 15px;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.file-content {
+    flex: 1;
+}
+
+.file-content h3 {
+    margin-bottom: 5px;
+    color: #ffffff;
+    font-weight: 600;
+    text-shadow: none;
+}
+
+.file-content p {
+    color: #cccccc;
+    margin-bottom: 5px;
+    line-height: 1.4;
+    text-shadow: none;
+}
+
+.file-content a {
+    color: #4dabf7;
+    text-decoration: none;
+    transition: all 0.2s;
+    text-shadow: none;
+}
+
+.file-content a:hover {
+    color: #74c0fc;
+    text-decoration: underline;
+}
+
+.taskbar-item {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    height: 100%;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #000000;
+}
+
+.taskbar-item:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.taskbar-item i {
+    margin-right: 5px;
+    color: #000000;
+    text-shadow: none;
+}
+
+.taskbar-item span {
+    font-size: 12px;
+    text-shadow: none;
+    color: #000000;
+}
+
+/* Time and Date Widget */
+.time-date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px 15px;
+    background: #000000;
+    border-radius: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.time-date:hover {
+    background: #1a1a1a;
+}
+
+#current-time {
+    font-size: 14px;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+#current-date {
+    font-size: 12px;
+    color: #cccccc;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(30, 30, 30, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Loading Screen */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease-out;
+}
+
+.loading-screen::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.loading-screen.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.windows-logo {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.windows-logo::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    background: #ffffff;
+    transform: translate(-50%, -50%);
+    animation: windowsLogo 3s ease infinite;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+}
+
+.loading-text {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 300;
+    text-align: center;
+    opacity: 0;
+    animation: fadeInOut 2s ease infinite;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.author-name {
+    color: #ffffff;
+    font-size: 32px;
+    font-weight: 600;
+    margin-top: 20px;
+    opacity: 0;
+    animation: slideUp 0.5s ease forwards 1s;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.loading-dots {
+    display: flex;
+    gap: 8px;
+    margin-top: 20px;
+    z-index: 1;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    background: #ffffff;
+    border-radius: 50%;
+    animation: loadingDots 1.5s ease-in-out infinite;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes loadingDots {
+    0%, 100% {
+        transform: scale(0.3);
+        opacity: 0.3;
+    }
+    50% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInOut {
+    0%, 100% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes windowsLogo {
+    0% {
+        clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+    }
+    25% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    50% {
+        clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%);
+    }
+    75% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    100% {
+        clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+    }
+}
+
+/* Add after the existing taskbar styles */
+
+.taskbar-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background: rgba(45, 45, 45, 0.95);
+    border-radius: 4px;
+    padding: 4px 8px;
+    width: 200px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+}
+
+.search-box i {
+    color: #ffffff;
+    margin-right: 8px;
+}
+
+.search-box input {
+    background: none;
+    border: none;
+    color: #ffffff;
+    outline: none;
+    width: 100%;
+    font-size: 13px;
+}
+
+.search-box input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Search Results */
+.search-results {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    width: 100%;
+    background: rgba(45, 45, 45, 0.95);
+    border-radius: 8px;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 8px;
+    max-height: 300px;
+    overflow-y: auto;
+    display: none;
+    z-index: 1000;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.search-result-item {
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #ffffff;
+}
+
+.search-result-item:hover {
+    background: rgba(60, 60, 60, 0.9);
+}
+
+.search-result-item i {
+    font-size: 16px;
+    color: #ffffff;
+    width: 20px;
+    text-align: center;
+}
+
+.search-result-item span {
+    color: #ffffff;
+    font-size: 13px;
+}
+
+/* Terminal Styles */
+.terminal {
+    width: 600px;
+    height: 400px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #1a1a1a !important;
+    color: #ffffff;
+    font-family: 'Consolas', monospace;
+    padding: 0;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    display: none;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.terminal-header {
+    background: #1a1a1a;
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #333;
+}
+
+.terminal-content {
+    padding: 12px;
+    height: calc(100% - 40px);
+    overflow-y: auto;
+    background: #1a1a1a;
+    color: #ffffff;
+}
+
+.terminal-input-line {
+    display: flex;
+    align-items: center;
+    margin-top: 4px;
+}
+
+.prompt {
+    color: #00ff00;
+    margin-right: 8px;
+}
+
+.terminal-input {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-family: 'Consolas', monospace;
+    font-size: 14px;
+    flex-grow: 1;
+    outline: none;
+}
+
+.terminal-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Vibrant Folder Icons */
+.icon i.fa-graduation-cap {
+    color: #FF4081 !important; /* Vibrant pink */
+}
+
+.icon i.fa-project-diagram {
+    color: #00E5FF !important; /* Bright cyan */
+}
+
+.icon i.fa-tools {
+    color: #FFD700 !important; /* Gold */
+}
+
+.icon i.fa-link {
+    color: #7C4DFF !important; /* Bright purple */
+}
+
+.icon i.fa-address-card {
+    color: #76FF03 !important; /* Bright green */
+}
+
+.icon i.fa-user {
+    color: #FF3D00 !important; /* Bright orange */
+}
+
+/* Make folder text more visible */
+.icon span {
+    color: #000000;
+    font-weight: 500;
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+}
+
+/* Update taskbar icons for folders */
+.taskbar-item i.fa-graduation-cap {
+    color: #FF4081 !important;
+}
+
+.taskbar-item i.fa-project-diagram {
+    color: #00E5FF !important;
+}
+
+.taskbar-item i.fa-tools {
+    color: #FFD700 !important;
+}
+
+.taskbar-item i.fa-link {
+    color: #7C4DFF !important;
+}
+
+.taskbar-item i.fa-address-card {
+    color: #76FF03 !important;
+}
+
+.taskbar-item i.fa-user {
+    color: #FF3D00 !important;
+}
+
+/* Terminal window controls */
+.terminal .window-controls button {
+    background: none;
+    border: none;
+    color: #ffffff;
+    padding: 4px 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.terminal .window-controls button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.terminal .close-btn:hover {
+    background: #ff0000 !important;
+}
+
+/* Start Menu */
+.start-menu {
+    position: fixed;
+    bottom: 40px;
+    left: 0;
+    width: 300px;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px 8px 0 0;
+    display: none;
+    z-index: 1000;
+    animation: slideUp 0.3s ease-out;
+}
+
+.start-menu.active {
+    display: block;
+}
+
+.start-menu-header {
+    padding: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #ffffff;
+}
+
+.user-profile i {
+    font-size: 24px;
+}
+
+.start-menu-items {
+    padding: 8px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.menu-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.menu-item i {
+    font-size: 18px;
+    width: 24px;
+    text-align: center;
+}
+
+/* Terminal button in taskbar */
+.terminal-btn {
+    padding: 0 12px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.terminal-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.terminal-btn i {
+    font-size: 16px;
+    color: #ffffff;
+}
+
+/* Social Media Apps in Taskbar */
+.social-app {
+    width: 40px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.social-app:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.social-app i {
+    font-size: 18px;
+    color: #1a73e8;
+    margin: 0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Gmail uses red, Google uses blue */
+.social-app[title="Gmail"] i.fa-google { color: #EA4335; }
+.social-app[title="Google"] i.fa-google { color: #4285F4; }
+.social-app i.fa-instagram { color: #E4405F; }
+.social-app i.fa-twitter { color: #1DA1F2; }
+.social-app i.fa-chess { color: #7FA650; }
+.social-app i.fa-youtube { color: #FF0000; }
+.social-app i.fa-spotify { color: #1DB954; }
+.social-app i.fa-amazon { color: #FF9900; }
+
+.social-app::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.social-app:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Weather widget styles */
+.weather-widget {
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    gap: 8px;
+    height: 100%;
+    margin-left: auto;
+    margin-right: 10px;
+    color: #1a73e8;
+    font-weight: 500;
+}
+
+.weather-widget i {
+    font-size: 18px;
+    color: #1a73e8;
+}
+
+.weather-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.weather-temp {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a73e8;
+}
+
+.weather-location {
+    font-size: 11px;
+    opacity: 0.9;
+    color: #1a73e8;
+}
+
+/* Weather Window Styles - Fluent Design Inspired */
+#weather-window {
+    width: 900px;
+    height: 580px;
+    background: linear-gradient(135deg, rgba(26, 26, 46, 0.95), rgba(22, 33, 62, 0.95));
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    border-radius: 12px;
+    overflow: hidden;
+    backdrop-filter: blur(40px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.weather-container {
+    height: calc(100% - 50px);
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+/* Weather Hero Section */
+.weather-hero {
+    padding: 40px 50px;
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.weather-location-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.location-name {
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    color: #ffffff;
+}
+
+.weather-description {
+    font-size: 18px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 0.3px;
+}
+
+.weather-main-display {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.weather-icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.weather-icon-main {
+    font-size: 120px;
+    color: #60a5fa;
+    filter: drop-shadow(0 8px 24px rgba(96, 165, 250, 0.4));
+    animation: weatherFloat 6s ease-in-out infinite;
+}
+
+@keyframes weatherFloat {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.temperature-display {
+    display: flex;
+    align-items: flex-start;
+    line-height: 1;
+}
+
+.temperature-value {
+    font-size: 96px;
+    font-weight: 300;
+    letter-spacing: -4px;
+    color: #ffffff;
+}
+
+.temperature-unit {
+    font-size: 36px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 12px;
+    margin-left: 4px;
+}
+
+/* Weather Details Grid */
+.weather-details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 30px 50px 40px 50px;
+    flex: 1;
+}
+
+.weather-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 24px 28px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+}
+
+.weather-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(96, 165, 250, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(96, 165, 250, 0.15);
+    border-radius: 12px;
+    flex-shrink: 0;
+}
+
+.card-icon i {
+    font-size: 24px;
+    color: #60a5fa;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+}
+
+.card-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.card-value {
+    font-size: 28px;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+}
+
+/* Weather Background Variations */
+#weather-window.clear-bg {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.3), rgba(59, 130, 246, 0.3), rgba(37, 99, 235, 0.4)) !important;
+}
+
+#weather-window.clear-bg .weather-icon-main {
+    color: #fbbf24;
+    filter: drop-shadow(0 8px 32px rgba(251, 191, 36, 0.5));
+}
+
+#weather-window.clear-bg .card-icon {
+    background: rgba(251, 191, 36, 0.15);
+}
+
+#weather-window.clear-bg .card-icon i {
+    color: #fbbf24;
+}
+
+#weather-window.cloudy-bg {
+    background: linear-gradient(135deg, rgba(100, 116, 139, 0.4), rgba(71, 85, 105, 0.4), rgba(51, 65, 85, 0.5)) !important;
+}
+
+#weather-window.cloudy-bg .weather-icon-main {
+    color: #cbd5e1;
+    filter: drop-shadow(0 8px 24px rgba(203, 213, 225, 0.3));
+}
+
+#weather-window.rainy-bg {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.5), rgba(15, 23, 42, 0.5), rgba(2, 6, 23, 0.6)) !important;
+}
+
+#weather-window.rainy-bg .weather-icon-main {
+    color: #60a5fa;
+    filter: drop-shadow(0 8px 24px rgba(96, 165, 250, 0.4));
+}
+
+#weather-window.snowy-bg {
+    background: linear-gradient(135deg, rgba(224, 242, 254, 0.3), rgba(186, 230, 253, 0.3), rgba(147, 197, 253, 0.4)) !important;
+}
+
+#weather-window.snowy-bg .weather-icon-main {
+    color: #e0f2fe;
+    filter: drop-shadow(0 8px 32px rgba(224, 242, 254, 0.6));
+}
+
+#weather-window.snowy-bg .weather-card {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+#weather-window.stormy-bg {
+    background: linear-gradient(135deg, rgba(17, 24, 39, 0.6), rgba(31, 41, 55, 0.6), rgba(55, 65, 81, 0.7)) !important;
+}
+
+#weather-window.stormy-bg .weather-icon-main {
+    color: #fbbf24;
+    filter: drop-shadow(0 8px 40px rgba(251, 191, 36, 0.8));
+    animation: weatherFloat 6s ease-in-out infinite, lightningFlash 3s ease-in-out infinite;
+}
+
+@keyframes lightningFlash {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.6;
+    }
+    55% {
+        opacity: 1;
+    }
+    60% {
+        opacity: 0.7;
+    }
+}
+
+#weather-window.foggy-bg {
+    background: linear-gradient(135deg, rgba(156, 163, 175, 0.4), rgba(107, 114, 128, 0.4), rgba(75, 85, 99, 0.5)) !important;
+}
+
+#weather-window.foggy-bg .weather-icon-main {
+    color: #d1d5db;
+    filter: drop-shadow(0 8px 24px rgba(209, 213, 219, 0.3));
+    opacity: 0.85;
+}
+
+/* Window Header for Weather */
+#weather-window .window-header {
+    background: linear-gradient(to right, #1a1a1a, #2d2d2d);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#weather-window .window-header span {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 8px 15px;
+    border-radius: 8px;
+}
+
+#weather-window .window-header i {
+    color: #00aaff;
+}
+
+#weather-window .close-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+#weather-window .close-btn:hover {
+    background: rgba(255, 59, 48, 0.8);
+    color: #ffffff;
+}
+
+/* Clock Window Styles */
+#clock-window {
+    width: 400px;
+    height: 500px;
+    background: #1a1a1a;
+    color: #ffffff;
+}
+
+.clock-details {
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Analog Clock Styles */
+.analog-clock {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    margin: 20px auto;
+}
+
+.clock-face {
+    width: 100%;
+    height: 100%;
+    border: 8px solid #4a90e2;
+    border-radius: 50%;
+    position: relative;
+    background: #2a2a2a;
+    box-shadow: 0 0 20px rgba(74, 144, 226, 0.3);
+}
+
+.center-dot {
+    width: 12px;
+    height: 12px;
+    background: #4a90e2;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+.hand {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform-origin: bottom;
+    background: #ffffff;
+    border-radius: 4px;
+}
+
+.hour-hand {
+    width: 4px;
+    height: 60px;
+    background: #ff9f43;
+}
+
+.minute-hand {
+    width: 3px;
+    height: 80px;
+    background: #4a90e2;
+}
+
+.second-hand {
+    width: 2px;
+    height: 90px;
+    background: #ee5253;
+}
+
+.hour-marker {
+    width: 3px;
+    height: 15px;
+    background: #4a90e2;
+    position: absolute;
+    top: -7px;
+    left: 50%;
+    transform-origin: bottom;
+}
+
+/* Digital Clock Styles */
+.digital-clock {
+    font-size: 48px;
+    font-weight: bold;
+    color: #4a90e2;
+    text-shadow: 0 0 10px rgba(74, 144, 226, 0.5);
+    margin: 20px 0;
+}
+
+.date-full {
+    font-size: 20px;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.time-zones {
+    display: grid;
+    grid-gap: 15px;
+    width: 100%;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.time-zone-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background: rgba(74, 144, 226, 0.1);
+    border-radius: 5px;
+    color: #ffffff;
+}
+
+.time-zone-item span {
+    font-weight: bold;
+    color: #4a90e2;
+}
+
+/* Make weather widget and time-date clickable */
+.weather-widget, .time-date {
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.weather-widget:hover, .time-date:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .desktop-icons {
+        width: 70px;
+        padding: 10px;
+        gap: 15px;
+    }
+
+    .icon {
+        width: 50px;
+        height: 70px;
+    }
+
+    .icon i {
+        font-size: 24px;
+    }
+
+    .icon span {
+        font-size: 10px;
+    }
+
+    .window {
+        width: 90%;
+        left: 50%;
+        max-height: 80vh;
+    }
+
+    .window-content {
+        padding: 15px;
+    }
+
+    .file {
+        padding: 10px;
+    }
+
+    .file i {
+        font-size: 20px;
+    }
+
+    .file-content h3 {
+        font-size: 14px;
+    }
+
+    .file-content p {
+        font-size: 12px;
+    }
+
+    .taskbar {
+        height: 50px;
+        padding: 0 5px;
+    }
+
+    .search-box {
+        width: 150px;
+    }
+
+    .search-box input {
+        font-size: 12px;
+    }
+
+    .terminal {
+        width: 90%;
+        height: 60vh;
+    }
+
+    .terminal-content {
+        font-size: 12px;
+    }
+
+    .start-menu {
+        width: 250px;
+    }
+
+    .weather-widget {
+        padding: 0 8px;
+    }
+
+    .weather-temp {
+        font-size: 12px;
+    }
+
+    .weather-location {
+        font-size: 10px;
+    }
+
+    .time-date {
+        padding: 0 5px;
+    }
+
+    #current-time, #current-date {
+        font-size: 11px;
+    }
+}
+
+/* Mobile Touch Improvements */
+@media (hover: none) and (pointer: coarse) {
+    .icon, .taskbar-item, .start-button, .search-box, .terminal-btn, .social-app {
+        min-height: 44px; /* Minimum touch target size */
+        min-width: 44px;
+    }
+
+    .window-header {
+        padding: 15px;
+    }
+
+    .close-btn, .minimize-btn, .maximize-btn {
+        padding: 8px 12px;
+        margin: 0 2px;
+    }
+
+    .search-results {
+        max-height: 50vh;
+    }
+
+    .search-result-item {
+        padding: 12px;
+    }
+
+    .menu-item {
+        padding: 15px;
+    }
+
+    /* Improve scrolling on mobile */
+    .window-content, .terminal-content, .start-menu-items {
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+    }
+
+    /* Remove hover effects on mobile */
+    .icon:hover, .taskbar-item:hover, .file:hover, .social-app:hover {
+        transform: none;
+    }
+
+    /* Active states for touch */
+    .icon:active, .taskbar-item:active, .file:active, .social-app:active {
+        background-color: rgba(255, 255, 255, 0.3);
+        transform: scale(0.98);
+    }
+}
+
+/* Landscape Mode */
+@media screen and (max-width: 768px) and (orientation: landscape) {
+    .desktop-icons {
+        width: 60px;
+        gap: 10px;
+    }
+
+    .icon {
+        width: 45px;
+        height: 60px;
+    }
+
+    .window {
+        max-height: 70vh;
+    }
+
+    .start-menu {
+        max-height: 70vh;
+    }
+
+    .terminal {
+        height: 50vh;
+    }
+}
+
+/* Small screens */
+@media screen and (max-width: 480px) {
+    .taskbar-left {
+        gap: 4px;
+    }
+
+    .search-box {
+        width: 120px;
+    }
+
+    .social-app {
+        width: 35px;
+    }
+
+    .weather-widget {
+        display: none;
+    }
+
+    .time-date {
+        flex-direction: row;
+        gap: 5px;
+    }
+
+    #current-date {
+        display: none;
+    }
+}
+
+/* Fix for iOS Safari bottom bar */
+@supports (-webkit-touch-callout: none) {
+    .taskbar {
+        padding-bottom: env(safe-area-inset-bottom);
+        height: calc(40px + env(safe-area-inset-bottom));
+    }
+
+    .start-menu {
+        bottom: calc(40px + env(safe-area-inset-bottom));
+    }
+}
+
+/* Prevent text selection on mobile */
+* {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+input, textarea {
+    -webkit-user-select: text;
+    user-select: text;
+}
+
+/* Window Close Button */
+.window .close-btn {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0 5px;
+    transition: all 0.2s;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+}
+
+.window .close-btn:hover {
+    background-color: rgba(255, 59, 48, 0.2);
+    color: #ff3b30;
+}
+
+/* Notepad Styles */
+#notepad-window {
+    width: 900px;
+    height: 600px;
+}
+
+.notepad-content {
+    padding: 0 !important;
+    display: flex;
+    height: calc(100% - 44px);
+    background: rgba(30, 30, 30, 0.95);
+}
+
+.notepad-sidebar {
+    width: 200px;
+    background: rgba(20, 20, 20, 0.95);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-header {
+    padding: 15px;
+    background: rgba(96, 165, 250, 0.15);
+    border-bottom: 1px solid rgba(96, 165, 250, 0.3);
+    font-weight: 600;
+    font-size: 13px;
+    color: #60a5fa;
+}
+
+.saved-files-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 5px;
+}
+
+.saved-file-item {
+    padding: 10px 12px;
+    margin: 3px 0;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 13px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.saved-file-item:hover {
+    background: rgba(96, 165, 250, 0.2);
+    border-left: 3px solid #60a5fa;
+    padding-left: 9px;
+}
+
+.saved-file-item i {
+    font-size: 12px;
+    color: #60a5fa;
+}
+
+/* How to Use Guide Styles */
+.how-to-use-window {
+    width: 900px;
+    max-width: 90vw;
+    max-height: 85vh;
+}
+
+.how-to-use-window .window-content {
+    background: rgba(30, 30, 30, 0.95);
+    color: #e8e8e8;
+}
+
+.guide-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.guide-section h2 {
+    color: #60a5fa;
+    font-size: 22px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.guide-section h2 i {
+    font-size: 20px;
+}
+
+.guide-section p {
+    line-height: 1.8;
+    margin-bottom: 12px;
+    color: #d0d0d0;
+}
+
+.guide-section ul,
+.guide-section ol {
+    margin-left: 25px;
+    line-height: 1.8;
+}
+
+.guide-section li {
+    margin-bottom: 8px;
+    color: #d0d0d0;
+}
+
+.guide-section strong {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.command-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.command-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+    border: 1px solid rgba(96, 165, 250, 0.2);
+}
+
+.command-item code {
+    background: rgba(96, 165, 250, 0.1);
+    color: #60a5fa;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.command-item span {
+    color: #b0b0b0;
+    font-size: 13px;
+}
+
+.note-box {
+    background: rgba(96, 165, 250, 0.1);
+    border-left: 4px solid #60a5fa;
+    padding: 15px;
+    border-radius: 4px;
+    margin-top: 15px;
+    color: #e0e0e0;
+}
+
+.warning-box {
+    background: rgba(251, 191, 36, 0.1);
+    border: 1px solid rgba(251, 191, 36, 0.3);
+    border-left: 4px solid #fbbf24;
+    padding: 20px;
+    border-radius: 6px;
+    margin-top: 15px;
+}
+
+.warning-box i {
+    color: #fbbf24;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.warning-box p {
+    color: #e0e0e0;
+    margin-bottom: 10px;
+}
+
+.warning-box ul {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.warning-box li {
+    color: #d0d0d0;
+    margin-bottom: 6px;
+}
+
+.notepad-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.notepad-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    background: rgba(45, 45, 45, 0.95);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.notepad-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    color: #ffffff;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.notepad-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(96, 165, 250, 0.3);
+    transform: translateY(-1px);
+}
+
+.notepad-btn:active {
+    transform: translateY(0);
+}
+
+.notepad-btn i {
+    font-size: 12px;
+}
+
+.notepad-status {
+    margin-left: auto;
+    color: #4caf50;
+    font-size: 13px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+#notepad-textarea {
+    flex: 1;
+    width: 100%;
+    padding: 20px;
+    background: rgba(20, 20, 20, 0.8);
+    border: none;
+    color: #ffffff;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    resize: none;
+    outline: none;
+}
+
+#notepad-textarea::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+#notepad-textarea::-webkit-scrollbar {
+    width: 12px;
+}
+
+#notepad-textarea::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#notepad-textarea::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+}
+
+#notepad-textarea::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* How to Use Styles */
+#howtouse-window {
+    width: 750px;
+    height: 600px;
+}
+
+.howtouse-content {
+    max-height: 550px;
+    overflow-y: auto;
+    padding: 25px !important;
+}
+
+.howtouse-content h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 28px;
+}
+
+.guide-section {
+    margin-bottom: 25px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.guide-section h3 {
+    color: #60a5fa;
+    margin-bottom: 12px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.guide-section h3 i {
+    font-size: 20px;
+}
+
+.guide-section p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.guide-section ul, .guide-section ol {
+    margin-left: 20px;
+    margin-top: 10px;
+    line-height: 1.8;
+}
+
+.guide-section li {
+    margin-bottom: 8px;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.guide-section code {
+    background: rgba(96, 165, 250, 0.15);
+    padding: 3px 8px;
+    border-radius: 4px;
+    color: #60a5fa;
+    font-family: 'Consolas', monospace;
+    font-size: 13px;
+}
+
+.guide-section strong {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.howtouse-content::-webkit-scrollbar {
+    width: 10px;
+}
+
+.howtouse-content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.howtouse-content::-webkit-scrollbar-thumb {
+    background: rgba(96, 165, 250, 0.3);
+    border-radius: 5px;
+}
+
+.howtouse-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(96, 165, 250, 0.5);
+}
+

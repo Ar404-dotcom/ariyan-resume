@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ariyan Roy - Windows Resume</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="windows-logo"></div>
+        <div class="loading-text">Loading</div>
+        <div class="loading-dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+        <div class="author-name">Ariyan Roy</div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="desktop">
+        <div class="desktop-icons">
+            <div class="icon" onclick="openFolder('introduction')">
+                <i class="fas fa-user"></i>
+                <span>About Me</span>
+            </div>
+            <div class="icon" onclick="openFolder('academics')">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Academics</span>
+            </div>
+            <div class="icon" onclick="openFolder('projects')">
+                <i class="fas fa-project-diagram"></i>
+                <span>Projects</span>
+            </div>
+            <div class="icon" onclick="openFolder('skills')">
+                <i class="fas fa-tools"></i>
+                <span>Skills</span>
+            </div>
+            <div class="icon" onclick="openFolder('links')">
+                <i class="fas fa-link"></i>
+                <span>Links</span>
+            </div>
+            <div class="icon" onclick="openFolder('contact')">
+                <i class="fas fa-address-card"></i>
+                <span>Contact</span>
+            </div>
+            <div class="icon" onclick="openFolder('howto')">
+                <i class="fas fa-book"></i>
+                <span>How to Use</span>
+            </div>
+            <div class="icon" onclick="openFolder('notepad')">
+                <i class="fas fa-file-alt"></i>
+                <span>Notepad</span>
+            </div>
+        </div>
+
+        <!-- Windows -->
+        <div class="window" id="introduction-window">
+            <div class="window-header">
+                <span>About Me</span>
+                <button class="close-btn" onclick="closeFolder('introduction')">×</button>
+            </div>
+            <div class="window-content">
+                <div class="file">
+                    <i class="fas fa-user-circle"></i>
+                    <div class="file-content">
+                        <h3>Ariyan Roy</h3>
+                        <p>Full Stack Developer</p>
+                        <p>I’m a Computer Science student at VIT-AP, passionate about exploring data and uncovering insights. I’ve worked
+                            with SQL and R for data analytics, and I also have experience in web development and Retrieval-Augmented
+                            Generation (RAG). I enjoy learning new technologies and applying them to solve meaningful problems.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="window" id="academics-window">
+            <div class="window-header">
+                <span>Academics</span>
+                <button class="close-btn" onclick="closeFolder('academics')">×</button>
+            </div>
+            <div class="window-content">
+                <div class="file">
+                    <i class="fas fa-school"></i>
+                    <div class="file-content">
+                        <h3>Ramakrishna Mission Vidyalaya</h3>
+                        <p>All India Secondary School Examination</p>
+                        <p>Passing percentage: 89%</p>
+                    </div>
+                </div>
+                <div class="file">
+                    <i class="fas fa-school"></i>
+                    <div class="file-content">
+                        <h3>Ramakrishna Mission Vidyalaya</h3>
+                        <p>All India Senior School Certificate Examination</p>
+                        <p>Passing percentage: 83.8%</p>
+                    </div>
+                </div>
+                <div class="file">
+                    <i class="fas fa-university"></i>
+                    <div class="file-content">
+                        <h3>Vellore Institute of Technology-AP</h3>
+                        <p>Bachelor of Technology (CSE)</p>
+                        <p>CGPA: 8.06</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="window" id="projects-window">
+            <div class="window-header">
+                <span>Projects</span>
+                <button class="close-btn" onclick="closeFolder('projects')">×</button>
+            </div>
+            <div class="window-content">
+                <div class="file">
+                    <i class="fas fa-robot"></i>
+                    <div class="file-content">
+                        <h3>AI Medical Chatbot With RAG</h3>
+                        <p>A chatbot that can analyze and respond to user queries related to medical conditions and treatments</p>
+                    </div>
+                </div>
+                <div class="file">
+                    <i class="fas fa-eye"></i>
+                    <div class="file-content">
+                        <h3>MEDICARE MOBILE APPLICATION</h3>
+                        <p>A mobile application that can help users to find the nearest hospital and doctor</p>
+                    </div>
+                </div>
+                <div class="file">
+                    <i class="fas fa-image"></i>
+                    <div class="file-content">
+                        <h3>Messaging App Clone</h3>
+                        <p>A messaging app clone that can help users to send and receive messages</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="window" id="skills-window">
+            <div class="window-header">
+                <span>Skills</span>
+                <button class="close-btn" onclick="closeFolder('skills')">×</button>
+            </div>
+            <div class="window-content">
+                <div class="file">
+                    <i class="fas fa-code"></i>
+                    <div class="file-content">
+                        <h3>Programming Languages</h3>
+                        <p>Java, Python, C,R Programming, SQL</p>
+                    </div>
+                </div>
+                <div class="file">
+                    <i class="fas fa-globe"></i>
+                    <div class="file-content">
+                        <h3>Web Technologies</h3>
+                        <p>HTML, CSS, JavaScript, Node.js, Express.js, React.js</p>
+                    </div>
+                </div>
+                <div class="file">
+                    <i class="fab fa-aws"></i>
+                    <div class="file-content">
+                        <h3>Cloud Technologies</h3>
+                        <p>AWS</p>
+                    </div>
+                </div>
+                <div class="file">
+                    <i class="fas fa-brain"></i>
+                    <div class="file-content">
+                        <h3>Soft Skills</h3>
+                        <p>Strong analytical skills, attention to detail</p>
+                        <p>Methodical and excellent organizational skills</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="window" id="links-window">
+            <div class="window-header">
+                <span>Links</span>
+                <button class="close-btn" onclick="closeFolder('links')">×</button>
+            </div>
+            <div class="window-content">
+                <div class="file">
+                    <i class="fab fa-github"></i>
+                    <div class="file-content">
+                        <a href="https://github.com/Ar404-dotcom" target="_blank">GitHub Profile</a>
+                    </div>
+                </div>
+                <div class="file">
+                    <i class="fas fa-code"></i>
+                    <div class="file-content">
+                        <a href="https://leetcode.com/u/Ariyan_/" target="_blank">LeetCode Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="window" id="contact-window">
+            <div class="window-header">
+                <span>Contact</span>
+                <button class="close-btn" onclick="closeFolder('contact')">×</button>
+            </div>
+            <div class="window-content">
+                <div class="file">
+                    <i class="fas fa-phone"></i>
+                    <div class="file-content">
+                        <h3>Phone</h3>
+                        <p>📞 8837225614</p>
+                    </div>
+                </div>
+                <div class="file">
+                    <i class="fas fa-envelope"></i>
+                    <div class="file-content">
+                        <h3>Email</h3>
+                        <p>📧 royariyan02@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- How to Use Window -->
+        <div class="window" id="howtouse-window">
+            <div class="window-header">
+                <span><i class="fas fa-question-circle"></i> How to Use</span>
+                <button class="close-btn" onclick="closeFolder('howtouse')">×</button>
+            </div>
+            <div class="window-content howtouse-content">
+                <h2 style="color:#60a5fa;margin-bottom:20px;">📖 Windows Resume - User Guide</h2>
+                
+                <div class="guide-section">
+                    <h3><i class="fas fa-desktop"></i> Desktop Icons</h3>
+                    <p>Click any icon to open the corresponding window. Icons include About Me, Academics, Projects, Skills, Links, Contact, and Notepad.</p>
+                </div>
+
+                <div class="guide-section">
+                    <h3><i class="fas fa-terminal"></i> Terminal Commands</h3>
+                    <p><strong>Basic Commands:</strong></p>
+                    <ul>
+                        <li><code>help</code> - Show all available commands</li>
+                        <li><code>dir</code> or <code>ls</code> - List directory contents</li>
+                        <li><code>cd &lt;folder&gt;</code> - Open or navigate to a folder</li>
+                        <li><code>cls</code> or <code>clear</code> - Clear terminal screen</li>
+                        <li><code>date</code> - Show current date</li>
+                        <li><code>time</code> - Show current time</li>
+                        <li><code>echo &lt;text&gt;</code> - Display a message</li>
+                    </ul>
+
+                    <p><strong>File Management:</strong></p>
+                    <ul>
+                        <li><code>mkdir &lt;name&gt;</code> - Create a new folder (appears on desktop!)</li>
+                        <li><code>type &lt;filename&gt;</code> - Display file contents</li>
+                        <li><code>open &lt;filename&gt;</code> - Open a saved text file</li>
+                        <li><code>notepad &lt;filename&gt;</code> - Open file in Notepad</li>
+                    </ul>
+                </div>
+
+                <div class="guide-section">
+                    <h3><i class="fas fa-file-alt"></i> Notepad Features</h3>
+                    <p><strong>Buttons:</strong></p>
+                    <ul>
+                        <li><strong>New</strong> - Create a new note</li>
+                        <li><strong>Save</strong> - Save to current session</li>
+                        <li><strong>Save to txt</strong> - Save to txt folder (accessible later)</li>
+                        <li><strong>Download</strong> - Download as real .txt file</li>
+                        <li><strong>Clear</strong> - Clear all content</li>
+                    </ul>
+                    <p>Auto-save: Your content is automatically saved every second!</p>
+                    <p>Saved Files: Click on saved file names to open them in Notepad</p>
+                </div>
+
+                <div class="guide-section">
+                    <h3><i class="fas fa-folder"></i> Working with Text Files</h3>
+                    <p><strong>Create and Save:</strong></p>
+                    <ol>
+                        <li>Type <code>mkdir mynote</code> in terminal OR use Notepad</li>
+                        <li>Write your content</li>
+                        <li>Click "Save to txt Folder"</li>
+                        <li>Enter a filename when prompted</li>
+                    </ol>
+
+                    <p><strong>Access Later:</strong></p>
+                    <ol>
+                        <li>In terminal: <code>cd txt</code></li>
+                        <li>Type <code>dir</code> to see all saved files</li>
+                        <li>Type <code>open filename</code> or <code>notepad filename</code></li>
+                        <li>Or click on the file name in Notepad's saved files list</li>
+                    </ol>
+                </div>
+
+                <div class="guide-section">
+                    <h3><i class="fas fa-cloud-sun"></i> Weather Widget</h3>
+                    <p>Click the weather widget in the taskbar to see detailed weather information including temperature, humidity, wind speed, and cloud cover. Background changes based on weather conditions!</p>
+                </div>
+
+                <div class="guide-section">
+                    <h3><i class="fas fa-clock"></i> Clock Widget</h3>
+                    <p>Click the time/date in the taskbar to see detailed clock information with UTC and local time zones.</p>
+                </div>
+
+                <div class="guide-section">
+                    <h3><i class="fas fa-search"></i> Search Box</h3>
+                    <p>Use the search box in the taskbar to quickly find folders, apps, and social links. Just start typing!</p>
+                </div>
+
+                <div class="guide-section">
+                    <h3><i class="fas fa-info-circle"></i> Important Notes</h3>
+                    <ul>
+                        <li>All data is stored temporarily (sessionStorage)</li>
+                        <li>Your files persist during the browser session</li>
+                        <li>Data is cleared when you close the browser tab</li>
+                        <li>Use the Download button to save files permanently</li>
+                        <li>Windows are draggable - click and drag the header</li>
+                    </ul>
+                </div>
+
+                <div class="guide-section" style="background:rgba(96,165,250,0.1);padding:15px;border-radius:10px;border:1px solid rgba(96,165,250,0.3);">
+                    <h3><i class="fas fa-lightbulb"></i> Pro Tips</h3>
+                    <ul>
+                        <li>Create folders with <code>mkdir</code> - they appear as desktop icons!</li>
+                        <li>Use <code>type filename</code> to quickly view file contents</li>
+                        <li>Save important notes with the Download button</li>
+                        <li>Navigate quickly with <code>cd foldername</code></li>
+                        <li>Use the Start Menu for quick access to all apps</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Windows Terminal -->
+        <div class="window terminal" id="terminal-window">
+            <div class="window-header">
+                <span><i class="fas fa-terminal"></i> Windows Terminal</span>
+                <div class="window-controls">
+                    <button class="minimize-btn">─</button>
+                    <button class="maximize-btn">□</button>
+                    <button class="close-btn" onclick="closeFolder('terminal')">×</button>
+                </div>
+            </div>
+            <div class="window-content terminal-content">
+                <div class="terminal-output"></div>
+                <div class="terminal-input-line">
+                    <span class="prompt">C:\Users\Ariyan></span>
+                    <input type="text" class="terminal-input" placeholder="Type a command...">
+                </div>
+            </div>
+        </div>
+
+        <!-- Weather Window -->
+        <div id="weather-window" class="window">
+            <div class="window-header">
+                <span><i class="fas fa-cloud-sun"></i> Weather</span>
+                <button class="close-btn" onclick="closeFolder('weather')"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="weather-container">
+                <div class="weather-hero">
+                    <div class="weather-location-info">
+                        <div class="location-name" id="weather-location-large"></div>
+                        <div class="weather-description" id="weather-description">Partly Cloudy</div>
+                    </div>
+                    <div class="weather-main-display">
+                        <div class="weather-icon-container">
+                            <i class="fas fa-cloud-sun weather-icon-main"></i>
+                        </div>
+                        <div class="temperature-display">
+                            <span class="temperature-value" id="weather-temp-large"></span>
+                            <span class="temperature-unit">°C</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="weather-details-grid">
+                    <div class="weather-card">
+                        <div class="card-icon">
+                            <i class="fas fa-temperature-high"></i>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-label">Feels Like</div>
+                            <div class="card-value" id="weather-feels-like">--°C</div>
+                        </div>
+                    </div>
+                    
+                    <div class="weather-card">
+                        <div class="card-icon">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-label">Humidity</div>
+                            <div class="card-value" id="weather-humidity">--%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="weather-card">
+                        <div class="card-icon">
+                            <i class="fas fa-wind"></i>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-label">Wind Speed</div>
+                            <div class="card-value" id="weather-wind">-- km/h</div>
+                        </div>
+                    </div>
+                    
+                    <div class="weather-card">
+                        <div class="card-icon">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-label">Cloud Cover</div>
+                            <div class="card-value" id="weather-cloud">--%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notepad Window -->
+        <div class="window" id="notepad-window">
+            <div class="window-header">
+                <span><i class="fas fa-file-alt"></i> Notepad</span>
+                <button class="close-btn" onclick="closeFolder('notepad')">×</button>
+            </div>
+            <div class="window-content notepad-content">
+                <div class="notepad-sidebar">
+                    <div class="sidebar-header">
+                        <i class="fas fa-folder-open"></i> Saved Files
+                    </div>
+                    <div id="saved-files-list" class="saved-files-list">
+                        <p style="color:rgba(255,255,255,0.5);font-size:12px;padding:10px;">No saved files yet</p>
+                    </div>
+                </div>
+                <div class="notepad-main">
+                    <div class="notepad-toolbar">
+                        <button class="notepad-btn" id="notepad-new"><i class="fas fa-file"></i> New</button>
+                        <button class="notepad-btn" id="notepad-save"><i class="fas fa-save"></i> Save</button>
+                        <button class="notepad-btn" id="notepad-savetxt"><i class="fas fa-folder-plus"></i> Save to txt</button>
+                        <button class="notepad-btn" id="notepad-download"><i class="fas fa-download"></i> Download</button>
+                        <button class="notepad-btn" id="notepad-clear"><i class="fas fa-eraser"></i> Clear</button>
+                        <span class="notepad-status" id="notepad-status"></span>
+                    </div>
+                    <textarea id="notepad-textarea" placeholder="Start typing..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Clock Window -->
+        <div class="window" id="clock-window">
+            <div class="window-header">
+                <span><i class="fas fa-clock"></i> Date & Time</span>
+                <button class="close-btn" onclick="closeFolder('clock')">×</button>
+            </div>
+            <div class="window-content">
+                <div class="clock-details">
+                    <div class="digital-clock"></div>
+                    <div class="date-full"></div>
+                    <div class="time-zones">
+                        <div class="time-zone-item">
+                            <span>UTC</span>
+                            <div class="utc-time"></div>
+                        </div>
+                        <div class="time-zone-item">
+                            <span>Local</span>
+                            <div class="local-time"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- How to Use Guide Window -->
+        <div class="window how-to-use-window" id="howto-window">
+            <div class="window-header">
+                <span><i class="fas fa-book"></i> How to Use - Desktop Features Guide</span>
+                <button class="close-btn" onclick="closeFolder('howto')">×</button>
+            </div>
+            <div class="window-content" style="padding: 20px; overflow-y: auto; max-height: 500px;">
+                <div class="guide-section">
+                    <h2><i class="fas fa-desktop"></i> Desktop Icons</h2>
+                    <p>Click any desktop icon to open the corresponding folder/application:</p>
+                    <ul>
+                        <li><strong>About Me</strong> - Personal introduction and background</li>
+                        <li><strong>Education</strong> - Academic qualifications and degrees</li>
+                        <li><strong>Skills</strong> - Technical and soft skills</li>
+                        <li><strong>Projects</strong> - Portfolio of completed projects</li>
+                        <li><strong>Experience</strong> - Professional work history</li>
+                        <li><strong>Contact</strong> - Email and phone information</li>
+                        <li><strong>Links</strong> - GitHub, LeetCode, and other profiles</li>
+                    </ul>
+                </div>
+
+                <div class="guide-section">
+                    <h2><i class="fas fa-terminal"></i> Terminal (CMD)</h2>
+                    <p>Open the terminal and use these commands:</p>
+                    <div class="command-list">
+                        <div class="command-item">
+                            <code>help</code>
+                            <span>Show all available commands</span>
+                        </div>
+                        <div class="command-item">
+                            <code>dir</code>
+                            <span>List files in current directory</span>
+                        </div>
+                        <div class="command-item">
+                            <code>cd txt</code>
+                            <span>Navigate to the virtual txt folder</span>
+                        </div>
+                        <div class="command-item">
+                            <code>cd ..</code>
+                            <span>Go back to previous directory</span>
+                        </div>
+                        <div class="command-item">
+                            <code>mkdir foldername</code>
+                            <span>Create a new folder (appears as desktop icon)</span>
+                        </div>
+                        <div class="command-item">
+                            <code>type filename</code>
+                            <span>Display contents of a text file</span>
+                        </div>
+                        <div class="command-item">
+                            <code>open filename</code>
+                            <span>Open a saved file in an editable window</span>
+                        </div>
+                        <div class="command-item">
+                            <code>notepad filename</code>
+                            <span>Open a file in Notepad</span>
+                        </div>
+                        <div class="command-item">
+                            <code>cls</code>
+                            <span>Clear the terminal screen</span>
+                        </div>
+                        <div class="command-item">
+                            <code>ver</code>
+                            <span>Show system version</span>
+                        </div>
+                        <div class="command-item">
+                            <code>date</code>
+                            <span>Display current date</span>
+                        </div>
+                        <div class="command-item">
+                            <code>time</code>
+                            <span>Display current time</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="guide-section">
+                    <h2><i class="fas fa-sticky-note"></i> Notepad</h2>
+                    <p>Use Notepad to write and manage text files:</p>
+                    <ul>
+                        <li><strong>Write</strong> - Type your text in the main textarea</li>
+                        <li><strong>New Button</strong> - Create a new blank note</li>
+                        <li><strong>Save Button</strong> - Auto-saves to browser session (temporary)</li>
+                        <li><strong>Save to txt Button</strong> - Save to the virtual txt folder (accessible via terminal)</li>
+                        <li><strong>Download Button</strong> - Download the note as a .txt file to your computer</li>
+                        <li><strong>Clear Button</strong> - Remove all content</li>
+                        <li><strong>Saved Files Sidebar</strong> - View and click on previously saved txt files to load them</li>
+                    </ul>
+                </div>
+
+                <div class="guide-section">
+                    <h2><i class="fas fa-folder"></i> File Management</h2>
+                    <p><strong>Creating Folders with mkdir:</strong></p>
+                    <ol>
+                        <li>Open the terminal (CMD icon)</li>
+                        <li>Type: <code>mkdir myfolder</code></li>
+                        <li>A new desktop icon will appear</li>
+                        <li>The folder window opens automatically where you can write text</li>
+                        <li>Click "Save to txt folder" to save the content</li>
+                    </ol>
+                    
+                    <p><strong>Accessing Saved Files:</strong></p>
+                    <ol>
+                        <li>In terminal, type: <code>cd txt</code></li>
+                        <li>Type: <code>dir</code> to see all saved files</li>
+                        <li>Type: <code>type filename</code> to view content</li>
+                        <li>Type: <code>open filename</code> to edit the file</li>
+                        <li>Or use: <code>notepad filename</code> to open in Notepad</li>
+                    </ol>
+                </div>
+
+                <div class="guide-section">
+                    <h2><i class="fas fa-cloud-sun"></i> Weather Widget</h2>
+                    <p>The weather widget shows real-time weather information:</p>
+                    <ul>
+                        <li><strong>Dynamic Background</strong> - Changes based on current weather conditions</li>
+                        <li><strong>Temperature</strong> - Current temperature in Celsius</li>
+                        <li><strong>Humidity</strong> - Current humidity percentage</li>
+                        <li><strong>Wind Speed</strong> - Wind speed in km/h</li>
+                        <li><strong>Weather Description</strong> - Clear, Cloudy, Rainy, Snowy, Stormy, or Foggy</li>
+                        <li><strong>Animated Icons</strong> - Weather icons with animations (floating, lightning for storms)</li>
+                    </ul>
+                    <p class="note-box">Weather data updates automatically based on your location using Open-Meteo API</p>
+                </div>
+
+                <div class="guide-section">
+                    <h2><i class="fas fa-save"></i> Data Persistence</h2>
+                    <p><strong>Important Note:</strong></p>
+                    <div class="warning-box">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p>All data (folders, text files, notepad content) is stored temporarily using <strong>sessionStorage</strong>.</p>
+                        <p>This means:</p>
+                        <ul>
+                            <li>✅ Data persists while browser tab is open</li>
+                            <li>✅ Survives page refreshes</li>
+                            <li>❌ Clears when you close the browser tab</li>
+                            <li>❌ Not shared between different tabs</li>
+                        </ul>
+                        <p><strong>To permanently save:</strong> Use the "Download" button in Notepad to save files to your computer.</p>
+                    </div>
+                </div>
+
+                <div class="guide-section">
+                    <h2><i class="fas fa-keyboard"></i> Tips & Tricks</h2>
+                    <ul>
+                        <li>Drag windows by their title bar to reposition them</li>
+                        <li>Desktop icons created by mkdir persist during your session</li>
+                        <li>Use the sidebar in Notepad to quickly access saved files</li>
+                        <li>Terminal commands are case-insensitive</li>
+                        <li>Weather background changes automatically based on real weather</li>
+                        <li>Click the Start button to access quick shortcuts</li>
+                        <li>Download important files before closing the browser tab</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="taskbar">
+            <div class="taskbar-left">
+                <div class="start-button">
+                    <i class="fab fa-windows"></i>
+                </div>
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Type to search...">
+                </div>
+                <div class="taskbar-item terminal-btn" onclick="openFolder('terminal')">
+                    <i class="fas fa-terminal"></i>
+                </div>
+            </div>
+            <div class="weather-widget">
+                <i class="fas fa-cloud"></i>
+                <div class="weather-info">
+                    <div class="weather-temp">--°C</div>
+                    <div class="weather-location">Vijayawada</div>
+                </div>
+            </div>
+            <div class="time-date">
+                <div id="current-time"></div>
+                <div id="current-date"></div>
+            </div>
+        </div>
+
+        <!-- Start Menu -->
+        <div class="start-menu">
+            <div class="start-menu-header">
+                <div class="user-profile">
+                    <i class="fas fa-user"></i>
+                    <span>Ariyan</span>
+                </div>
+            </div>
+            <div class="start-menu-items">
+                <div class="menu-item" data-folder="academics">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Academics</span>
+                </div>
+                <div class="menu-item" data-folder="projects">
+                    <i class="fas fa-project-diagram"></i>
+                    <span>Projects</span>
+                </div>
+                <div class="menu-item" data-folder="skills">
+                    <i class="fas fa-tools"></i>
+                    <span>Skills</span>
+                </div>
+                <div class="menu-item" data-folder="links">
+                    <i class="fas fa-link"></i>
+                    <span>Links</span>
+                </div>
+                <div class="menu-item" data-folder="contact">
+                    <i class="fas fa-address-card"></i>
+                    <span>Contact</span>
+                </div>
+                <div class="menu-item" data-folder="introduction">
+                    <i class="fas fa-user"></i>
+                    <span>Introduction</span>
+                </div>
+                <div class="menu-item" data-folder="howtouse">
+                    <i class="fas fa-question-circle"></i>
+                    <span>How to Use</span>
+                </div>
+                <div class="menu-item" data-folder="notepad">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Notepad</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
