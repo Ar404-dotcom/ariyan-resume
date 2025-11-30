@@ -23,9 +23,9 @@
     <!-- Main Content -->
     <div class="desktop">
         <div class="desktop-icons">
-            <div class="icon" onclick="openFolder('introduction')">
-                <i class="fas fa-user"></i>
-                <span>About Me</span>
+            <div class="icon" onclick="openFolder('resume')">
+                <i class="fas fa-file-pdf"></i>
+                <span>My Resume</span>
             </div>
             <div class="icon" onclick="openFolder('academics')">
                 <i class="fas fa-graduation-cap"></i>
@@ -441,6 +441,32 @@
                         <span class="notepad-status" id="notepad-status"></span>
                     </div>
                     <textarea id="notepad-textarea" placeholder="Start typing..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resume Viewer Window -->
+        <div class="window resume-window" id="resume-window">
+            <div class="window-header">
+                <span><i class="fas fa-file-pdf"></i> Ariyan Roy - Resume</span>
+                <button class="close-btn" onclick="closeFolder('resume')">×</button>
+            </div>
+            <div class="window-content">
+                <div class="resume-container">
+                    <div class="resume-toolbar">
+                        <a href="assets/resume.pdf" download="Ariyan_Roy_Resume.pdf" class="resume-btn download-btn">
+                            <i class="fas fa-download"></i> Download PDF
+                        </a>
+                        <a href="assets/resume.pdf" target="_blank" class="resume-btn view-btn">
+                            <i class="fas fa-external-link-alt"></i> Open in New Tab
+                        </a>
+                        <button class="resume-btn print-btn" onclick="printResume()">
+                            <i class="fas fa-print"></i> Print
+                        </button>
+                    </div>
+                    <div class="resume-preview">
+                        <iframe src="assets/resume.pdf" type="application/pdf" width="100%" height="100%"></iframe>
+                    </div>
                 </div>
             </div>
         </div>

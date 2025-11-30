@@ -25,48 +25,70 @@ body {
 }
 
 .desktop-icons {
-    padding: 20px;
+    padding: 15px 10px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    width: 100px;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 8px;
+    width: 90px;
     background: rgba(0, 0, 0, 0.2);
-    height: calc(100vh - 40px);
+    height: calc(100vh - 48px);
     backdrop-filter: blur(10px);
     border-right: 1px solid rgba(255, 255, 255, 0.1);
+    overflow-y: auto;
+}
+
+.desktop-icons::-webkit-scrollbar {
+    width: 4px;
+}
+
+.desktop-icons::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
 }
 
 .icon {
-    width: 60px;
-    height: 80px;
+    width: 70px;
+    min-height: 70px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     cursor: pointer;
-    padding: 5px;
+    padding: 8px 5px;
     border-radius: 8px;
     transition: all 0.2s;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    flex-shrink: 0;
 }
 
 .icon:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.15);
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .icon i {
-    font-size: 28px;
-    margin-bottom: 8px;
+    font-size: 26px;
+    margin-bottom: 6px;
     color: #ffffff;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
+/* PDF icon specific color */
+.icon i.fa-file-pdf {
+    color: #ef4444;
+}
+
 .icon span {
-    font-size: 11px;
+    font-size: 10px;
     text-align: center;
     color: #ffffff;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    line-height: 1.2;
+    word-wrap: break-word;
+    max-width: 65px;
 }
 
 .taskbar {
@@ -1270,21 +1292,21 @@ body {
 @media screen and (max-width: 768px) {
     .desktop-icons {
         width: 70px;
-        padding: 10px;
-        gap: 15px;
+        padding: 8px 5px;
+        gap: 5px;
     }
 
     .icon {
-        width: 50px;
-        height: 70px;
+        width: 55px;
+        min-height: 60px;
     }
 
     .icon i {
-        font-size: 24px;
+        font-size: 22px;
     }
 
     .icon span {
-        font-size: 10px;
+        font-size: 9px;
     }
 
     .window {
@@ -1867,3 +1889,133 @@ input, textarea {
     background: rgba(96, 165, 250, 0.5);
 }
 
+/* Resume Viewer Styles */
+.resume-window {
+    width: 900px;
+    height: 90vh;
+    max-width: 95vw;
+    max-height: 95vh;
+}
+
+.resume-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: rgba(20, 20, 20, 0.95);
+}
+
+.resume-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 15px;
+    background: rgba(30, 30, 30, 0.95);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
+    height: 50px;
+}
+
+.resume-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.resume-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.resume-btn:active {
+    transform: translateY(0);
+}
+
+.resume-btn.download-btn {
+    background: linear-gradient(135deg, #10b981, #059669);
+    border-color: #10b981;
+}
+
+.resume-btn.download-btn:hover {
+    background: linear-gradient(135deg, #059669, #047857);
+    box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);
+}
+
+.resume-btn.view-btn {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    border-color: #3b82f6;
+}
+
+.resume-btn.view-btn:hover {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+}
+
+.resume-btn.print-btn {
+    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+    border-color: #8b5cf6;
+}
+
+.resume-btn.print-btn:hover {
+    background: linear-gradient(135deg, #7c3aed, #6d28d9);
+    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
+}
+
+.resume-btn i {
+    font-size: 14px;
+}
+
+.resume-preview {
+    height: 90%;
+    width: 100%;
+    padding: 10px;
+    background: rgba(40, 40, 40, 0.5);
+    box-sizing: border-box;
+}
+
+.resume-preview iframe {
+    width: 800px;
+    height: 500px;
+    border: none;
+    border-radius: 8px;
+    background: #ffffff;
+}
+
+/* Fallback for browsers that don't support PDF embed */
+.resume-fallback {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    padding: 40px;
+}
+
+.resume-fallback i {
+    font-size: 80px;
+    color: #ef4444;
+    margin-bottom: 20px;
+}
+
+.resume-fallback h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.resume-fallback p {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 25px;
+}

@@ -77,24 +77,29 @@ function closeFolder(folderName) {
 
 // Taskbar management
 function addToTaskbar(folderName) {
+    // Check if taskbar item already exists to prevent duplicates
+    const existingItem = document.querySelector(`.taskbar-item[data-folder="${folderName}"]`);
+    if (existingItem) {
+        return; // Already exists, don't add duplicate
+    }
+    
     const taskbar = document.querySelector('.taskbar');
     const taskbarItem = document.createElement('div');
     taskbarItem.className = 'taskbar-item';
+    taskbarItem.dataset.folder = folderName; // Add data attribute for identification
     taskbarItem.innerHTML = `
         <i class="fas ${getIconForFolder(folderName)}"></i>
         <span>${folderName.charAt(0).toUpperCase() + folderName.slice(1)}</span>
     `;
     taskbarItem.onclick = () => toggleWindow(folderName);
-    taskbar.insertBefore(taskbarItem, document.querySelector('.time'));
+    taskbar.insertBefore(taskbarItem, document.querySelector('.weather-widget'));
 }
 
 function removeFromTaskbar(folderName) {
-    const taskbarItems = document.querySelectorAll('.taskbar-item');
-    taskbarItems.forEach(item => {
-        if (item.textContent.trim().toLowerCase() === folderName) {
-            item.remove();
-        }
-    });
+    const taskbarItem = document.querySelector(`.taskbar-item[data-folder="${folderName}"]`);
+    if (taskbarItem) {
+        taskbarItem.remove();
+    }
 }
 
 function getIconForFolder(folderName) {
@@ -110,9 +115,20 @@ function getIconForFolder(folderName) {
         notepad: 'fa-file-alt',
         terminal: 'fa-terminal',
         clock: 'fa-clock',
-        weather: 'fa-cloud-sun'
+        weather: 'fa-cloud-sun',
+        resume: 'fa-file-pdf'
     };
     return icons[folderName] || 'fa-folder';
+}
+
+// Print Resume Function
+function printResume() {
+    const iframe = document.querySelector('.resume-preview iframe');
+    if (iframe) {
+        iframe.contentWindow.print();
+    } else {
+        window.open('assets/resume.pdf', '_blank');
+    }
 }
 
 function toggleWindow(folderName) {
