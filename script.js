@@ -892,6 +892,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Restore desktop icons from session
     restoreDesktopIcons();
 
+    // Fetch weather on page load to update the taskbar widget
+    getWeather();
+
     // Weather widget click handler
     if (weatherWidget) {
         weatherWidget.onclick = function() {
