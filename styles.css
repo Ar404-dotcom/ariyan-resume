@@ -679,6 +679,7 @@ body {
 .terminal .window-controls button {
     background: none;
     border: none;
+    width: 80px;
     color: #ffffff;
     padding: 4px 8px;
     cursor: pointer;
@@ -1032,7 +1033,10 @@ body {
 
 /* Weather Background Variations */
 #weather-window.clear-bg {
-    background: linear-gradient(135deg, rgba(56, 189, 248, 0.3), rgba(59, 130, 246, 0.3), rgba(37, 99, 235, 0.4)) !important;
+    background: linear-gradient(135deg, rgba(251, 191, 36, 0.3), rgba(245, 158, 11, 0.3), rgba(234, 88, 12, 0.4)),
+                url('https://plus.unsplash.com/premium_photo-1680339680335-7e3b8572fc00?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjB8fHN1bW1lcnxlbnwwfHwwfHx8MA%3D%3D') !important;
+    background-size: cover !important;
+    background-position: center !important;
 }
 
 #weather-window.clear-bg .weather-icon-main {
@@ -1058,7 +1062,10 @@ body {
 }
 
 #weather-window.rainy-bg {
-    background: linear-gradient(135deg, rgba(30, 41, 59, 0.5), rgba(15, 23, 42, 0.5), rgba(2, 6, 23, 0.6)) !important;
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.5), rgba(15, 23, 42, 0.5), rgba(2, 6, 23, 0.6)),
+                url('https://images.unsplash.com/photo-1567688993206-43c34131b21f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') !important;
+    background-size: cover !important;
+    background-position: center !important;
 }
 
 #weather-window.rainy-bg .weather-icon-main {
@@ -1067,7 +1074,10 @@ body {
 }
 
 #weather-window.snowy-bg {
-    background: linear-gradient(135deg, rgba(224, 242, 254, 0.3), rgba(186, 230, 253, 0.3), rgba(147, 197, 253, 0.4)) !important;
+    background: linear-gradient(135deg, rgba(224, 242, 254, 0.3), rgba(186, 230, 253, 0.3), rgba(147, 197, 253, 0.4)),
+                url('https://images.unsplash.com/photo-1455156218388-5e61b526818b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHdpbnRlcnxlbnwwfHwwfHx8MA%3D%3D') !important;
+    background-size: cover !important;
+    background-position: center !important;
 }
 
 #weather-window.snowy-bg .weather-icon-main {
@@ -1110,6 +1120,7 @@ body {
 
 #weather-window.foggy-bg .weather-icon-main {
     color: #d1d5db;
+    background-image: url('path/to/your/image.jpg');
     filter: drop-shadow(0 8px 24px rgba(209, 213, 219, 0.3));
     opacity: 0.85;
 }

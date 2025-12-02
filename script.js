@@ -307,14 +307,19 @@ const validDirectories = {
 const validCommands = {
     'cd': 'Change directory',
     'dir': 'List directory contents',
+    'ls': 'List directory contents (with -l, -a flags)',
     'cls': 'Clear screen',
+    'clear': 'Clear screen',
     'help': 'Show available commands',
     'echo': 'Display a message',
     'date': 'Show current date',
     'time': 'Show current time',
     'mkdir': 'Create a new folder',
+    'touch': 'Create a new empty file',
     'open': 'Open a saved text file',
     'type': 'Display file contents',
+    'cat': 'Display file contents',
+    'pwd': 'Print current working directory',
     'notepad': 'Open file in notepad',
     'exit': 'Close terminal'
 };
@@ -461,27 +466,83 @@ function executeCommand(command) {
                 return `The system cannot find the path specified: ${newPath}`;
             }
 
+        case 'pwd':
+            return currentDirectory;
+
+        case 'touch':
+            if (args.length === 0) {
+                return 'Usage: touch <filename>';
+            }
+            const touchFileName = args[0].toLowerCase().replace(/\.txt$/, '');
+            // Check if file already exists
+            if (sessionStorage.getItem(`txtfile-${touchFileName}`)) {
+                return `File '${touchFileName}' already exists.`;
+            }
+            // Create empty file
+            sessionStorage.setItem(`txtfile-${touchFileName}`, '');
+            addToSavedFiles(touchFileName);
+            return `Created empty file '${touchFileName}'.`;
+
         case 'dir':
         case 'ls':
             if (!validDirectories[currentDirectory]) {
                 return `Directory not found: ${currentDirectory}`;
             }
-            let output = `\n Directory of ${currentDirectory}\n\n`;
             
-            // Show directories
-            validDirectories[currentDirectory].forEach(item => {
-                output += `[DIR]  ${item}\n`;
-            });
+            // Parse flags
+            const lsFlags = args.filter(arg => arg.startsWith('-')).join('');
+            const showLong = lsFlags.includes('l');
+            const showAll = lsFlags.includes('a');
             
-            // If in txt folder, show saved text files
-            if (currentDirectory === 'C:\\Users\\Ariyan\\txt') {
-                const savedFiles = getSavedTextFiles();
-                if (savedFiles.length > 0) {
+            let output = '';
+            
+            if (showLong) {
+                output += `\n Directory of ${currentDirectory}\n\n`;
+                output += `Mode          LastWriteTime      Name\n`;
+                output += `----          -------------      ----\n`;
+                
+                // Show hidden items if -a flag
+                if (showAll) {
+                    output += `d----         ${new Date().toLocaleDateString()}       .\n`;
+                    output += `d----         ${new Date().toLocaleDateString()}       ..\n`;
+                }
+                
+                // Show directories
+                validDirectories[currentDirectory].forEach(item => {
+                    output += `d----         ${new Date().toLocaleDateString()}       ${item}\n`;
+                });
+                
+                // If in txt folder, show saved text files
+                if (currentDirectory === 'C:\\Users\\Ariyan\\txt') {
+                    const savedFiles = getSavedTextFiles();
                     savedFiles.forEach(file => {
-                        output += `[FILE] ${file}\n`;
+                        const content = sessionStorage.getItem(`txtfile-${file}`) || '';
+                        output += `-a---         ${new Date().toLocaleDateString()}       ${file}.txt (${content.length} bytes)\n`;
                     });
-                } else {
-                    output += '\n(No text files saved yet)\n';
+                }
+            } else {
+                output += `\n Directory of ${currentDirectory}\n\n`;
+                
+                // Show hidden items if -a flag
+                if (showAll) {
+                    output += `.  ..  `;
+                }
+                
+                // Show directories
+                validDirectories[currentDirectory].forEach(item => {
+                    output += `[DIR]  ${item}\n`;
+                });
+                
+                // If in txt folder, show saved text files
+                if (currentDirectory === 'C:\\Users\\Ariyan\\txt') {
+                    const savedFiles = getSavedTextFiles();
+                    if (savedFiles.length > 0) {
+                        savedFiles.forEach(file => {
+                            output += `[FILE] ${file}\n`;
+                        });
+                    } else {
+                        output += '\n(No text files saved yet)\n';
+                    }
                 }
             }
             
@@ -547,23 +608,35 @@ function executeCommand(command) {
         case 'type':
         case 'cat':
             if (args.length === 0) {
-                return 'Usage: type <filename>';
+                return cmd === 'cat' ? 'Usage: cat <filename>' : 'Usage: type <filename>';
             }
-            const typeFileName = args[0].toLowerCase();
+            const typeFileName = args[0].toLowerCase().replace(/\.txt$/, '');
+            
+            // Check if it's a directory
+            const possibleDir = `${currentDirectory}\\${args[0]}`;
+            if (validDirectories[possibleDir]) {
+                return `cat: ${args[0]}: Is a directory`;
+            }
             
             // Check txt folder
             const typeContent = sessionStorage.getItem(`txtfile-${typeFileName}`);
-            if (typeContent) {
+            if (typeContent !== null) {
+                if (typeContent === '') {
+                    return `(empty file)`;
+                }
                 return `\n--- Content of ${typeFileName} ---\n\n${typeContent}\n\n--- End of file ---`;
             }
             
             // Check foldertext
             const folderTextContent = sessionStorage.getItem(`foldertext-${typeFileName}`);
-            if (folderTextContent) {
+            if (folderTextContent !== null) {
+                if (folderTextContent === '') {
+                    return `(empty file)`;
+                }
                 return `\n--- Content of ${typeFileName} ---\n\n${folderTextContent}\n\n--- End of file ---`;
             }
             
-            return `File '${typeFileName}' not found.`;
+            return `cat: ${typeFileName}: No such file or directory`;
 
         case 'notepad':
             if (args.length === 0) {
