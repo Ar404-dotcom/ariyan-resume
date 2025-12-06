@@ -47,6 +47,11 @@ let activeWindows = new Set();
 function openFolder(folderName) {
     const window = document.getElementById(`${folderName}-window`);
     
+    // Reset display style if it was set inline (fixes terminal reopen issue)
+    if (window.style.display === 'none') {
+        window.style.display = '';
+    }
+    
     // Close other windows if they're not in the same row
     const windowRect = window.getBoundingClientRect();
     activeWindows.forEach(activeWindow => {
@@ -571,7 +576,7 @@ function executeCommand(command) {
             return new Date().toLocaleTimeString();
 
         case 'exit':
-            terminal.style.display = 'none';
+            closeFolder('terminal');
             return '';
 
         case 'mkdir':
@@ -781,7 +786,7 @@ const maximizeBtn = terminalWindow.querySelector('.maximize-btn');
 const terminalCloseBtn = terminalWindow.querySelector('.close-btn');
 
 minimizeBtn.addEventListener('click', () => {
-    terminalWindow.style.display = 'none';
+    closeFolder('terminal');
 });
 
 maximizeBtn.addEventListener('click', () => {
@@ -801,7 +806,7 @@ maximizeBtn.addEventListener('click', () => {
 });
 
 terminalCloseBtn.addEventListener('click', () => {
-    terminalWindow.style.display = 'none';
+    closeFolder('terminal');
 });
 
 // Add social media apps to taskbar
