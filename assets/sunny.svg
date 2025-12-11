@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="120" height="120">
+  <defs>
+    <linearGradient id="sunGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FEF08A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FBBF24;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Sun circle -->
+  <circle cx="256" cy="256" r="120" fill="url(#sunGradient)"/>
+  <!-- Sun rays -->
+  <g fill="#FEF08A">
+    <rect x="240" y="40" width="32" height="80" rx="16"/>
+    <rect x="240" y="392" width="32" height="80" rx="16"/>
+    <rect x="40" y="240" width="80" height="32" ry="16"/>
+    <rect x="392" y="240" width="80" height="32" ry="16"/>
+    <rect x="100" y="100" width="32" height="80" rx="16" transform="rotate(-45 116 140)"/>
+    <rect x="380" y="100" width="32" height="80" rx="16" transform="rotate(45 396 140)"/>
+    <rect x="100" y="380" width="32" height="80" rx="16" transform="rotate(45 116 420)"/>
+    <rect x="380" y="380" width="32" height="80" rx="16" transform="rotate(-45 396 420)"/>
+  </g>
+</svg>

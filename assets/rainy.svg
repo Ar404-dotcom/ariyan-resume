@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="120" height="120">
+  <defs>
+    <linearGradient id="cloudGradient2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#7DD3FC;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3B82F6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Cloud -->
+  <ellipse cx="256" cy="200" rx="120" ry="85" fill="url(#cloudGradient2)"/>
+  <circle cx="190" cy="185" r="70" fill="url(#cloudGradient2)"/>
+  <circle cx="320" cy="185" r="70" fill="url(#cloudGradient2)"/>
+  <circle cx="256" cy="150" r="75" fill="url(#cloudGradient2)"/>
+  
+  <!-- Rain drops -->
+  <g fill="#60A5FA" opacity="0.9">
+    <ellipse cx="200" cy="310" rx="8" ry="16"/>
+    <ellipse cx="240" cy="340" rx="8" ry="16"/>
+    <ellipse cx="280" cy="320" rx="8" ry="16"/>
+    <ellipse cx="320" cy="350" rx="8" ry="16"/>
+    <ellipse cx="220" cy="370" rx="8" ry="16"/>
+    <ellipse cx="260" cy="390" rx="8" ry="16"/>
+    <ellipse cx="300" cy="380" rx="8" ry="16"/>
+  </g>
+</svg>

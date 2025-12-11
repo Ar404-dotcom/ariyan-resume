@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="120" height="120">
+  <defs>
+    <linearGradient id="cloudGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#E2E8F0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#94A3B8;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Large cloud -->
+  <ellipse cx="256" cy="280" rx="140" ry="100" fill="url(#cloudGradient)"/>
+  <circle cx="180" cy="260" r="80" fill="url(#cloudGradient)"/>
+  <circle cx="330" cy="260" r="80" fill="url(#cloudGradient)"/>
+  <circle cx="256" cy="220" r="90" fill="url(#cloudGradient)"/>
+  <!-- Small cloud overlay -->
+  <ellipse cx="340" cy="200" rx="70" ry="50" fill="#CBD5E1" opacity="0.8"/>
+  <circle cx="300" cy="190" r="40" fill="#CBD5E1" opacity="0.8"/>
+  <circle cx="370" cy="190" r="35" fill="#CBD5E1" opacity="0.8"/>
+</svg>
