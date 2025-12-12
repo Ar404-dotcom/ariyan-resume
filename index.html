@@ -6,6 +6,7 @@
     <title>Ariyan Roy - Windows Resume</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css">
 </head>
 <body>
     <!-- Loading Screen -->
@@ -62,6 +63,10 @@
             <div class="icon desktop-shortcut" onclick="openFolder('calculator')" title="Calculator">
                 <i class="fas fa-calculator"></i>
                 <span>Calculator</span>
+            </div>
+            <div class="icon desktop-shortcut" onclick="openFolder('chess')" title="Chess">
+                <i class="fas fa-chess"></i>
+                <span>Chess</span>
             </div>
         </div>
 
@@ -491,6 +496,20 @@
             </div>
         </div>
 
+        <!-- Chess Window -->
+        <div class="window chess-window" id="chess-window">
+            <div class="window-header">
+                <span><i class="fas fa-chess"></i> Chess</span>
+                <button class="chess-new-game-btn" onclick="window.ChessService.newGame()" title="Start New Game">
+                    <i class="fas fa-redo"></i> New Game
+                </button>
+                <button class="close-btn" onclick="closeFolder('chess')">×</button>
+            </div>
+            <div class="window-content chess-content">
+                <div id="chessboard" aria-label="Chess board"></div>
+            </div>
+        </div>
+
         <!-- Resume Viewer Window -->
         <div class="window resume-window" id="resume-window">
             <div class="window-header">
@@ -772,7 +791,11 @@
             </div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/chess.js@0.12.0/chess.js"></script>
+    <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"></script>
     <script src="calculatorService.js"></script>
+    <script src="chessService.js"></script>
     <script src="script.js"></script>
 </body>
 </html> 

@@ -699,6 +699,49 @@ body {
     background: rgba(96, 165, 250, 0.26);
 }
 
+/* Chess Styles */
+.chess-window {
+    width: 520px;
+    max-width: calc(100vw - 40px);
+}
+
+.chess-content {
+    padding: 16px;
+    background: rgba(20, 20, 20, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#chessboard {
+    width: 420px;
+    max-width: 100%;
+}
+
+.chess-new-game-btn {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 4px 10px;
+    margin-right: 8px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: background 0.2s;
+}
+
+.chess-new-game-btn:hover {
+    background: #45a049;
+}
+
+.chess-new-game-btn i {
+    font-size: 11px;
+}
+
 /* Vibrant Folder Icons */
 .icon i.fa-graduation-cap {
     color: #FF4081 !important; /* Vibrant pink */

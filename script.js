@@ -69,12 +69,22 @@ function openFolder(folderName) {
     
     // Add window to taskbar
     addToTaskbar(folderName);
+
+    // App-specific open hooks
+    if (folderName === 'chess' && self.ChessService && typeof self.ChessService.open === 'function') {
+        self.ChessService.open();
+    }
 }
 
 function closeFolder(folderName) {
     const window = document.getElementById(`${folderName}-window`);
     window.classList.remove('active');
     activeWindows.delete(window);
+
+    // App-specific close hooks
+    if (folderName === 'chess' && self.ChessService && typeof self.ChessService.close === 'function') {
+        self.ChessService.close();
+    }
     
     // Remove from taskbar
     removeFromTaskbar(folderName);
@@ -122,7 +132,8 @@ function getIconForFolder(folderName) {
         terminal: 'fa-terminal',
         clock: 'fa-clock',
         weather: 'fa-cloud-sun',
-        resume: 'fa-file-pdf'
+        resume: 'fa-file-pdf',
+        chess: 'fa-chess'
     };
     return icons[folderName] || 'fa-folder';
 }
@@ -208,8 +219,22 @@ function getHighestZIndex() {
 document.addEventListener('click', (e) => {
     const windows = document.querySelectorAll('.window');
     windows.forEach(window => {
+        // Don't close if clicking inside the window or on desktop icons/taskbar
         if (!window.contains(e.target) && !e.target.closest('.icon') && !e.target.closest('.taskbar-item')) {
-            closeFolder(window.id.replace('-window', ''));
+            // Special case: don't close chess window if interacting with board or pieces
+            const windowId = window.id.replace('-window', '');
+            if (windowId === 'chess') {
+                // Prevent closing during any chess interaction
+                if (e.target.closest('#chess-window') || 
+                    e.target.closest('.chess-content') || 
+                    e.target.closest('.chess-window') ||
+                    e.target.hasAttribute('data-piece') ||
+                    e.target.classList.contains('square-55d63') ||
+                    document.querySelector('#chess-window').classList.contains('dragging')) {
+                    return;
+                }
+            }
+            closeFolder(windowId);
         }
     });
 });
