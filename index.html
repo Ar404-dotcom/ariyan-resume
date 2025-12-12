@@ -57,6 +57,14 @@
             </div>
         </div>
 
+        <!-- Desktop shortcuts (like Windows shortcuts on wallpaper) -->
+        <div class="desktop-shortcuts" aria-label="Desktop shortcuts">
+            <div class="icon desktop-shortcut" onclick="openFolder('calculator')" title="Calculator">
+                <i class="fas fa-calculator"></i>
+                <span>Calculator</span>
+            </div>
+        </div>
+
         <!-- Windows -->
         <div class="window" id="introduction-window">
             <div class="window-header">
@@ -445,6 +453,44 @@
             </div>
         </div>
 
+        <!-- Calculator Window -->
+        <div class="window calculator-window" id="calculator-window">
+            <div class="window-header">
+                <span><i class="fas fa-calculator"></i> Calculator</span>
+                <button class="close-btn" onclick="closeFolder('calculator')">×</button>
+            </div>
+            <div class="window-content calculator-content">
+                <div class="calc-display">
+                    <input id="calc-display" type="text" value="0" readonly aria-label="Calculator display" />
+                </div>
+                <div class="calc-buttons" aria-label="Calculator buttons">
+                    <button class="calc-btn" data-action="clear">C</button>
+                    <button class="calc-btn" data-action="back">⌫</button>
+                    <button class="calc-btn" data-value="%">%</button>
+                    <button class="calc-btn" data-value="/">÷</button>
+
+                    <button class="calc-btn" data-value="7">7</button>
+                    <button class="calc-btn" data-value="8">8</button>
+                    <button class="calc-btn" data-value="9">9</button>
+                    <button class="calc-btn" data-value="*">×</button>
+
+                    <button class="calc-btn" data-value="4">4</button>
+                    <button class="calc-btn" data-value="5">5</button>
+                    <button class="calc-btn" data-value="6">6</button>
+                    <button class="calc-btn" data-value="-">−</button>
+
+                    <button class="calc-btn" data-value="1">1</button>
+                    <button class="calc-btn" data-value="2">2</button>
+                    <button class="calc-btn" data-value="3">3</button>
+                    <button class="calc-btn" data-value="+">+</button>
+
+                    <button class="calc-btn calc-btn-wide" data-value="0">0</button>
+                    <button class="calc-btn" data-value=".">.</button>
+                    <button class="calc-btn calc-btn-equals" data-action="equals">=</button>
+                </div>
+            </div>
+        </div>
+
         <!-- Resume Viewer Window -->
         <div class="window resume-window" id="resume-window">
             <div class="window-header">
@@ -715,6 +761,10 @@
                     <i class="fas fa-question-circle"></i>
                     <span>How to Use</span>
                 </div>
+                <div class="menu-item" data-folder="calculator">
+                    <i class="fas fa-calculator"></i>
+                    <span>Calculator</span>
+                </div>
                 <div class="menu-item" data-folder="notepad">
                     <i class="fas fa-file-alt"></i>
                     <span>Notepad</span>
@@ -722,6 +772,7 @@
             </div>
         </div>
     </div>
+    <script src="calculatorService.js"></script>
     <script src="script.js"></script>
 </body>
 </html> 

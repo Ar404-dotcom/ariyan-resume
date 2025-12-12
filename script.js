@@ -117,6 +117,7 @@ function getIconForFolder(folderName) {
         introduction: 'fa-user',
         howto: 'fa-book',
         howtouse: 'fa-book',
+        calculator: 'fa-calculator',
         notepad: 'fa-file-alt',
         terminal: 'fa-terminal',
         clock: 'fa-clock',
@@ -437,7 +438,7 @@ function executeCommand(command) {
             
             // Check if the argument matches any folder name
             const folderName = args[0].toLowerCase();
-            const validFolders = ['introduction', 'academics', 'projects', 'skills', 'links', 'contact', 'notepad'];
+            const validFolders = ['introduction', 'academics', 'projects', 'skills', 'links', 'contact', 'notepad', 'calculator'];
             
             if (validFolders.includes(folderName)) {
                 openFolder(folderName);
@@ -691,6 +692,153 @@ terminalInput.addEventListener('keydown', (e) => {
         }
     }
 });
+
+// Calculator functionality (service + UI)
+function initCalculator() {
+    const calculatorWindow = document.getElementById('calculator-window');
+    if (!calculatorWindow) return;
+
+    const display = document.getElementById('calc-display');
+    const buttons = calculatorWindow.querySelector('.calc-buttons');
+    if (!display || !buttons) return;
+
+    let expression = '';
+    let justEvaluated = false;
+
+    const isOperator = (ch) => ['+', '-', '*', '/', '%'].includes(ch);
+
+    function setDisplay(value) {
+        display.value = value;
+    }
+
+    function resetIfNeededForNumberInput(nextChar) {
+        if (!justEvaluated) return;
+        if ((nextChar >= '0' && nextChar <= '9') || nextChar === '.') {
+            expression = '';
+            justEvaluated = false;
+        }
+    }
+
+    function appendChar(ch) {
+        resetIfNeededForNumberInput(ch);
+        expression += ch;
+        setDisplay(expression);
+    }
+
+    function appendOp(op) {
+        if (!expression) {
+            if (op === '-') {
+                expression = '-';
+                setDisplay(expression);
+            }
+            return;
+        }
+
+        // Replace trailing operator
+        const last = expression[expression.length - 1];
+        if (isOperator(last)) {
+            expression = expression.slice(0, -1) + op;
+            setDisplay(expression);
+            return;
+        }
+
+        expression += op;
+        setDisplay(expression);
+        justEvaluated = false;
+    }
+
+    function clearAll() {
+        expression = '';
+        justEvaluated = false;
+        setDisplay('0');
+    }
+
+    function backspace() {
+        if (!expression) {
+            setDisplay('0');
+            return;
+        }
+        expression = expression.slice(0, -1);
+        setDisplay(expression || '0');
+    }
+
+    function evaluate() {
+        if (!expression) {
+            setDisplay('0');
+            return;
+        }
+        try {
+            if (!window.CalculatorService || typeof window.CalculatorService.evaluate !== 'function') {
+                throw new Error('Calculator service not loaded');
+            }
+            const result = window.CalculatorService.evaluate(expression);
+            expression = String(result);
+            justEvaluated = true;
+            setDisplay(expression);
+        } catch (e) {
+            expression = '';
+            justEvaluated = true;
+            setDisplay('Error');
+        }
+    }
+
+    buttons.addEventListener('click', (e) => {
+        const btn = e.target.closest('button');
+        if (!btn) return;
+
+        const action = btn.getAttribute('data-action');
+        const value = btn.getAttribute('data-value');
+
+        if (action === 'clear') return clearAll();
+        if (action === 'back') return backspace();
+        if (action === 'equals') return evaluate();
+
+        if (!value) return;
+
+        if (isOperator(value)) {
+            appendOp(value);
+        } else {
+            appendChar(value);
+        }
+    });
+
+    // Keyboard support when calculator is active
+    document.addEventListener('keydown', (e) => {
+        if (!calculatorWindow.classList.contains('active')) return;
+
+        const key = e.key;
+
+        if ((key >= '0' && key <= '9') || key === '.') {
+            e.preventDefault();
+            return appendChar(key);
+        }
+
+        if (['+', '-', '*', '/', '%'].includes(key)) {
+            e.preventDefault();
+            return appendOp(key);
+        }
+
+        if (key === 'Enter' || key === '=') {
+            e.preventDefault();
+            return evaluate();
+        }
+
+        if (key === 'Backspace') {
+            e.preventDefault();
+            return backspace();
+        }
+
+        if (key === 'Escape') {
+            e.preventDefault();
+            return closeFolder('calculator');
+        }
+
+        if (key.toLowerCase() === 'c') {
+            e.preventDefault();
+            return clearAll();
+        }
+    });
+}
 
 // Search functionality
 const searchBox = document.querySelector('.search-box input');
@@ -1006,6 +1154,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize Notepad
     initNotepad();
+
+    // Initialize Calculator
+    initCalculator();
 
     // Add close button functionality to both windows
     const closeButtons = document.querySelectorAll('#weather-window .close-btn, #clock-window .close-btn');

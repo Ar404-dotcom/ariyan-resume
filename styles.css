@@ -39,6 +39,21 @@ body {
     overflow-y: auto;
 }
 
+/* Desktop shortcuts (free-positioned like Windows shortcuts) */
+.desktop-shortcuts {
+    position: absolute;
+    top: 18px;
+    left: 110px; /* keep clear of the left sidebar */
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    z-index: 2;
+}
+
+.desktop-shortcut {
+    background: rgba(0, 0, 0, 0.15);
+}
+
 .desktop-icons::-webkit-scrollbar {
     width: 4px;
 }
@@ -618,6 +633,72 @@ body {
     color: rgba(255, 255, 255, 0.5);
 }
 
+/* Calculator Styles */
+.calculator-window {
+    width: 340px;
+    max-width: calc(100vw - 40px);
+}
+
+.calculator-content {
+    padding: 16px;
+    background: rgba(20, 20, 20, 0.75);
+}
+
+.calc-display {
+    margin-bottom: 12px;
+}
+
+.calc-display input {
+    width: 100%;
+    height: 56px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(0, 0, 0, 0.35);
+    color: #ffffff;
+    font-size: 28px;
+    padding: 0 12px;
+    text-align: right;
+    outline: none;
+}
+
+.calc-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.calc-btn {
+    height: 46px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.06);
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.calc-btn:hover {
+    background: rgba(255, 255, 255, 0.10);
+}
+
+.calc-btn:active {
+    transform: translateY(1px);
+}
+
+.calc-btn-wide {
+    grid-column: span 2;
+}
+
+.calc-btn-equals {
+    background: rgba(96, 165, 250, 0.18);
+    border-color: rgba(96, 165, 250, 0.35);
+}
+
+.calc-btn-equals:hover {
+    background: rgba(96, 165, 250, 0.26);
+}
+
 /* Vibrant Folder Icons */
 .icon i.fa-graduation-cap {
     color: #FF4081 !important; /* Vibrant pink */
@@ -628,6 +709,10 @@ body {
 }
 
 .icon i.fa-tools {
+    color: #FFD700 !important; /* Gold */
+}
+
+.icon i.fa-calculator {
     color: #FFD700 !important; /* Gold */
 }
 
@@ -660,6 +745,10 @@ body {
 }
 
 .taskbar-item i.fa-tools {
+    color: #FFD700 !important;
+}
+
+.taskbar-item i.fa-calculator {
     color: #FFD700 !important;
 }
 
@@ -705,7 +794,7 @@ body {
 
 .terminal .close-btn:hover {
     background: #ff0000 !important;
-    color: #ffffff !important;
+    color: #000000 !important;
 }
 
 /* Start Menu */
@@ -1054,8 +1143,16 @@ body {
 }
 
 #weather-window.clear-bg .weather-icon-main {
-    color: #fbbf24;
+    width: 120px;
+    height: 120px;
+    display: block;
+    background: url('assets/sunny.svg') center/contain no-repeat;
+    color: transparent;
     filter: drop-shadow(0 8px 32px rgba(251, 191, 36, 0.5));
+}
+
+#weather-window.clear-bg .weather-icon-main::before {
+    content: '' !important;
 }
 
 #weather-window.clear-bg .card-icon {
@@ -1071,8 +1168,16 @@ body {
 }
 
 #weather-window.cloudy-bg .weather-icon-main {
-    color: #cbd5e1;
+    width: 120px;
+    height: 120px;
+    display: block;
+    background: url('assets/cloudy.svg') center/contain no-repeat;
+    color: transparent;
     filter: drop-shadow(0 8px 24px rgba(203, 213, 225, 0.3));
+}
+
+#weather-window.cloudy-bg .weather-icon-main::before {
+    content: '' !important;
 }
 
 #weather-window.rainy-bg {
@@ -1083,8 +1188,16 @@ body {
 }
 
 #weather-window.rainy-bg .weather-icon-main {
-    color: #60a5fa;
+    width: 120px;
+    height: 120px;
+    display: block;
+    background: url('assets/rainy.svg') center/contain no-repeat;
+    color: transparent;
     filter: drop-shadow(0 8px 24px rgba(96, 165, 250, 0.4));
+}
+
+#weather-window.rainy-bg .weather-icon-main::before {
+    content: '' !important;
 }
 
 #weather-window.snowy-bg {
