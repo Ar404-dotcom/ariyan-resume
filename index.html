@@ -68,6 +68,10 @@
                 <i class="fas fa-chess"></i>
                 <span>Chess</span>
             </div>
+            <div class="icon desktop-shortcut" onclick="openFolder('urlshortener')" title="URL Shortener">
+                <i class="fas fa-link"></i>
+                <span>URL Shortener</span>
+            </div>
         </div>
 
         <!-- Windows -->
@@ -509,7 +513,40 @@
                 <div id="chessboard" aria-label="Chess board"></div>
             </div>
         </div>
-
+        <!-- URL Shortener Window -->
+        <div class="window urlshortener-window" id="urlshortener-window">
+            <div class="window-header">
+                <span><i class="fas fa-link"></i> URL Shortener</span>
+                <button class="close-btn" onclick="closeFolder('urlshortener')">×</button>
+            </div>
+            <div class="window-content urlshortener-content">
+                <div class="url-shortener-container">
+                    <div class="url-input-group">
+                        <label for="url-long-input">Enter Long URL:</label>
+                        <input type="text" id="url-long-input" placeholder="https://example.com/very/long/url" />
+                    </div>
+                    <button id="url-shorten-btn" class="url-btn url-primary">
+                        <i class="fas fa-compress-alt"></i> Shorten URL
+                    </button>
+                    <div class="url-input-group">
+                        <label for="url-short-output">Short URL:</label>
+                        <input type="text" id="url-short-output" readonly placeholder="Your short URL will appear here" />
+                    </div>
+                    <div class="url-actions">
+                        <button id="url-copy-btn" class="url-btn url-success" disabled>
+                            <i class="fas fa-copy"></i> Copy Short URL
+                        </button>
+                        <button id="url-clear-btn" class="url-btn url-secondary">
+                            <i class="fas fa-eraser"></i> Clear
+                        </button>
+                    </div>
+                    <div class="url-info">
+                        <i class="fas fa-info-circle"></i>
+                        <span>Short URLs work only in this browser session</span>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Resume Viewer Window -->
         <div class="window resume-window" id="resume-window">
             <div class="window-header">
@@ -796,6 +833,7 @@
     <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"></script>
     <script src="calculatorService.js"></script>
     <script src="chessService.js"></script>
+    <script src="urlShortenerService.js"></script>
     <script src="script.js"></script>
 </body>
 </html> 

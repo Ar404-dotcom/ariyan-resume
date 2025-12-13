@@ -74,6 +74,19 @@ function openFolder(folderName) {
     if (folderName === 'chess' && self.ChessService && typeof self.ChessService.open === 'function') {
         self.ChessService.open();
     }
+    if (folderName === 'urlshortener') {
+        // Small delay to ensure DOM is ready
+        setTimeout(() => {
+            const svc = self.UrlShortenerService;
+            console.log('Checking UrlShortenerService:', svc);
+            if (svc && typeof svc.init === 'function') {
+                console.log('Initializing URL Shortener service');
+                svc.init();
+            } else {
+                console.error('UrlShortenerService not available, svc:', svc);
+            }
+        }, 50);
+    }
 }
 
 function closeFolder(folderName) {
@@ -84,6 +97,9 @@ function closeFolder(folderName) {
     // App-specific close hooks
     if (folderName === 'chess' && self.ChessService && typeof self.ChessService.close === 'function') {
         self.ChessService.close();
+    }
+    if (folderName === 'urlshortener' && window.UrlShortenerService && typeof window.UrlShortenerService.close === 'function') {
+        window.UrlShortenerService.close();
     }
     
     // Remove from taskbar
@@ -133,7 +149,8 @@ function getIconForFolder(folderName) {
         clock: 'fa-clock',
         weather: 'fa-cloud-sun',
         resume: 'fa-file-pdf',
-        chess: 'fa-chess'
+        chess: 'fa-chess',
+        urlshortener: 'fa-link'
     };
     return icons[folderName] || 'fa-folder';
 }
