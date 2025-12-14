@@ -598,8 +598,18 @@ function executeCommand(command) {
 
         case 'cls':
         case 'clear':
-            document.querySelector('.terminal-content').innerHTML = '';
-            document.querySelector('.terminal-content').appendChild(document.querySelector('.terminal-input-line'));
+            const terminalContent = document.querySelector('.terminal-content');
+            const inputLine = document.querySelector('.terminal-input-line');
+            
+            // Remove all children except the input line
+            Array.from(terminalContent.children).forEach(child => {
+                if (child !== inputLine) {
+                    child.remove();
+                }
+            });
+            
+            // Ensure input line is at the bottom
+            terminalContent.appendChild(inputLine);
             return '';
 
         case 'help':
