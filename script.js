@@ -341,6 +341,17 @@ const terminal = document.querySelector('.terminal');
 const terminalInput = document.querySelector('.terminal-input');
 let currentDirectory = 'C:\\Users\\Ariyan';
 
+// Make terminal content area clickable to focus input
+const terminalContent = document.querySelector('.terminal-content');
+if (terminalContent) {
+    terminalContent.addEventListener('click', function(e) {
+        // Only focus if not clicking on a link or other interactive element
+        if (!e.target.closest('a') && !e.target.closest('button')) {
+            terminalInput.focus();
+        }
+    });
+}
+
 // Define valid directories
 const validDirectories = {
     'C:\\Users\\Ariyan': ['Desktop', 'Documents', 'Downloads', 'Pictures', 'txt'],
