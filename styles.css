@@ -2052,8 +2052,10 @@ input, textarea {
 .notepad-btn {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 6px;
     padding: 8px 16px;
+    height: 36px;
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 6px;
@@ -2062,6 +2064,8 @@ input, textarea {
     cursor: pointer;
     transition: all 0.2s;
     font-family: 'Segoe UI', sans-serif;
+    white-space: nowrap;
+    box-sizing: border-box;
 }
 
 .notepad-btn:hover {

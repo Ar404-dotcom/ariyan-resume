@@ -1670,6 +1670,67 @@ function initNotepad() {
         }
     });
 
+    // Huffman Encode button
+    const encodeBtn = document.getElementById('notepad-encode');
+    if (encodeBtn) {
+        encodeBtn.addEventListener('click', () => {
+            const content = textarea.value;
+            if (content.trim() === '') {
+                showStatus('Nothing to encode!', 2000, '#ff6b6b');
+                return;
+            }
+            
+            if (typeof HuffmanService === 'undefined') {
+                showStatus('Huffman service not loaded!', 2000, '#ff6b6b');
+                return;
+            }
+            
+            const result = HuffmanService.encode(content);
+            if (result.error) {
+                showStatus(`Error: ${result.error}`, 3000, '#ff6b6b');
+                return;
+            }
+            
+            const formattedOutput = HuffmanService.formatEncodedData(result);
+            textarea.value = formattedOutput;
+            sessionStorage.setItem('notepad-content', formattedOutput);
+            showStatus(`Encoded! Compression: ${result.compressionRatio}`, 3000, '#22c55e');
+        });
+    }
+
+    // Huffman Decode button
+    const decodeBtn = document.getElementById('notepad-decode');
+    if (decodeBtn) {
+        decodeBtn.addEventListener('click', () => {
+            const content = textarea.value;
+            if (content.trim() === '') {
+                showStatus('Nothing to decode!', 2000, '#ff6b6b');
+                return;
+            }
+            
+            if (typeof HuffmanService === 'undefined') {
+                showStatus('Huffman service not loaded!', 2000, '#ff6b6b');
+                return;
+            }
+            
+            const parsed = HuffmanService.parseEncodedData(content);
+            if (parsed.error) {
+                showStatus(`Error: ${parsed.error}`, 3000, '#ff6b6b');
+                return;
+            }
+            
+            const result = HuffmanService.decode(parsed.encoded, parsed.codeMap);
+            if (result.error) {
+                showStatus(`Error: ${result.error}`, 3000, '#ff6b6b');
+                return;
+            }
+            
+            textarea.value = result.decoded;
+            sessionStorage.setItem('notepad-content', result.decoded);
+            showStatus(`Decoded! Restored ${result.decodedLength} characters`, 3000, '#fbbf24');
+        });
+    }
+
     function showStatus(message, duration = 2000, color = '#4caf50') {
         status.textContent = message;
         status.style.color = color;
