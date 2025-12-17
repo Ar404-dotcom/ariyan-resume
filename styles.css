@@ -162,11 +162,28 @@ body {
     overflow: hidden;
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: box-shadow 0.2s ease, transform 0.05s ease-out;
 }
 
 .window.active {
     display: block;
     animation: windowOpen 0.3s ease-out;
+}
+
+.window.dragging {
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.7);
+    cursor: grabbing !important;
+    user-select: none;
+}
+
+.window.dragging * {
+    cursor: grabbing !important;
+    user-select: none;
+    pointer-events: none;
+}
+
+.window.dragging .close-btn {
+    pointer-events: auto;
 }
 
 @keyframes windowOpen {
@@ -187,9 +204,15 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    cursor: move;
+    cursor: grab;
     user-select: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background 0.2s ease;
+}
+
+.window-header:active {
+    cursor: grabbing;
+    background: rgba(55, 55, 55, 0.95);
 }
 
 .close-btn {

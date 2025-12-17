@@ -177,26 +177,52 @@ function toggleWindow(folderName) {
 // Make windows draggable
 function makeDraggable(element) {
     const header = element.querySelector('.window-header');
+    if (!header) return;
+    
     let isDragging = false;
-    let currentX;
-    let currentY;
-    let initialX;
-    let initialY;
-    let xOffset = 0;
-    let yOffset = 0;
+    let offsetX = 0;
+    let offsetY = 0;
 
+    // Mouse events
     header.addEventListener('mousedown', dragStart);
     document.addEventListener('mousemove', drag);
     document.addEventListener('mouseup', dragEnd);
+    
+    // Touch events for mobile
+    header.addEventListener('touchstart', touchStart, { passive: false });
+    document.addEventListener('touchmove', touchMove, { passive: false });
+    document.addEventListener('touchend', touchEnd);
 
     function dragStart(e) {
-        if (e.target === header || e.target.parentElement === header) {
-            initialX = e.clientX - xOffset;
-            initialY = e.clientY - yOffset;
+        if (e.target === header || e.target.parentElement === header || header.contains(e.target)) {
+            // Don't drag if clicking on close button
+            if (e.target.classList.contains('close-btn') || e.target.closest('.close-btn')) {
+                return;
+            }
+            
             isDragging = true;
+            
+            // Get the current position of the element
+            const rect = element.getBoundingClientRect();
+            
+            // Calculate offset between mouse position and element position
+            offsetX = e.clientX - rect.left;
+            offsetY = e.clientY - rect.top;
+            
+            // Add dragging class for visual feedback
+            element.classList.add('dragging');
+            header.style.cursor = 'grabbing';
             
             // Bring window to front
             element.style.zIndex = getHighestZIndex() + 1;
+            
+            // Remove any existing transform and use absolute positioning
+            element.style.transform = 'none';
+            element.style.left = rect.left + 'px';
+            element.style.top = rect.top + 'px';
+            
+            // Prevent text selection while dragging
+            e.preventDefault();
         }
     }
 
@@ -204,25 +230,104 @@ function makeDraggable(element) {
         if (isDragging) {
             e.preventDefault();
             
-            currentX = e.clientX - initialX;
-            currentY = e.clientY - initialY;
+            // Calculate new position
+            let newX = e.clientX - offsetX;
+            let newY = e.clientY - offsetY;
 
-            xOffset = currentX;
-            yOffset = currentY;
+            // Constrain to viewport with smooth boundaries
+            const rect = element.getBoundingClientRect();
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+            
+            // Allow some overflow but keep at least 50px of header visible
+            const minVisible = 50;
+            const maxX = viewportWidth - minVisible;
+            const maxY = viewportHeight - 30; // Keep header visible
+            const minX = -(rect.width - minVisible);
+            const minY = 0;
+            
+            newX = Math.max(minX, Math.min(maxX, newX));
+            newY = Math.max(minY, Math.min(maxY, newY));
 
-            setTranslate(currentX, currentY, element);
+            // Apply new position using requestAnimationFrame for smooth rendering
+            requestAnimationFrame(() => {
+                element.style.left = newX + 'px';
+                element.style.top = newY + 'px';
+            });
         }
     }
 
-    function setTranslate(xPos, yPos, el) {
-        el.style.transform = `translate(${xPos}px, ${yPos}px)`;
+    function touchStart(e) {
+        if (e.target.classList.contains('close-btn') || e.target.closest('.close-btn')) {
+            return;
+        }
+        
+        const touch = e.touches[0];
+        isDragging = true;
+        
+        const rect = element.getBoundingClientRect();
+        offsetX = touch.clientX - rect.left;
+        offsetY = touch.clientY - rect.top;
+        
+        element.classList.add('dragging');
+        header.style.cursor = 'grabbing';
+        element.style.zIndex = getHighestZIndex() + 1;
+        
+        element.style.transform = 'none';
+        element.style.left = rect.left + 'px';
+        element.style.top = rect.top + 'px';
+        
+        e.preventDefault();
+    }
+
+    function touchMove(e) {
+        if (isDragging) {
+            e.preventDefault();
+            
+            const touch = e.touches[0];
+            let newX = touch.clientX - offsetX;
+            let newY = touch.clientY - offsetY;
+
+            const rect = element.getBoundingClientRect();
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+            
+            const minVisible = 50;
+            const maxX = viewportWidth - minVisible;
+            const maxY = viewportHeight - 30;
+            const minX = -(rect.width - minVisible);
+            const minY = 0;
+            
+            newX = Math.max(minX, Math.min(maxX, newX));
+            newY = Math.max(minY, Math.min(maxY, newY));
+
+            requestAnimationFrame(() => {
+                element.style.left = newX + 'px';
+                element.style.top = newY + 'px';
+            });
+        }
     }
 
     function dragEnd(e) {
-        initialX = currentX;
-        initialY = currentY;
-        isDragging = false;
+        if (isDragging) {
+            isDragging = false;
+            
+            // Remove dragging class
+            element.classList.remove('dragging');
+            header.style.cursor = 'grab';
+        }
     }
+
+    function touchEnd(e) {
+        if (isDragging) {
+            isDragging = false;
+            element.classList.remove('dragging');
+            header.style.cursor = 'grab';
+        }
+    }
+    
+    // Set initial cursor
+    header.style.cursor = 'grab';
 }
 
 function getHighestZIndex() {
