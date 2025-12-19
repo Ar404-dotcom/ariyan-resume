@@ -93,6 +93,12 @@ function closeFolder(folderName) {
     const window = document.getElementById(`${folderName}-window`);
     window.classList.remove('active');
     activeWindows.delete(window);
+    
+    // Reset window position and styles so it opens centered next time
+    window.style.left = '';
+    window.style.top = '';
+    window.style.transform = '';
+    window.style.transition = '';
 
     // App-specific close hooks
     if (folderName === 'chess' && self.ChessService && typeof self.ChessService.close === 'function') {
@@ -205,6 +211,20 @@ function makeDraggable(element) {
             // Get the current position of the element
             const rect = element.getBoundingClientRect();
             
+            // Disable transition temporarily to prevent jump/vibrate
+            element.style.transition = 'none';
+            
+            // Set the position using left/top and remove transform
+            element.style.left = rect.left + 'px';
+            element.style.top = rect.top + 'px';
+            element.style.transform = 'none';
+            
+            // Force reflow to apply changes immediately
+            element.offsetHeight;
+            
+            // Re-enable transition for box-shadow only (not transform during drag)
+            element.style.transition = 'box-shadow 0.2s ease';
+            
             // Calculate offset between mouse position and element position
             offsetX = e.clientX - rect.left;
             offsetY = e.clientY - rect.top;
@@ -215,11 +235,6 @@ function makeDraggable(element) {
             
             // Bring window to front
             element.style.zIndex = getHighestZIndex() + 1;
-            
-            // Remove any existing transform and use absolute positioning
-            element.style.transform = 'none';
-            element.style.left = rect.left + 'px';
-            element.style.top = rect.top + 'px';
             
             // Prevent text selection while dragging
             e.preventDefault();
@@ -266,16 +281,27 @@ function makeDraggable(element) {
         isDragging = true;
         
         const rect = element.getBoundingClientRect();
+        
+        // Disable transition temporarily to prevent jump/vibrate
+        element.style.transition = 'none';
+        
+        // Set the position using left/top and remove transform
+        element.style.left = rect.left + 'px';
+        element.style.top = rect.top + 'px';
+        element.style.transform = 'none';
+        
+        // Force reflow to apply changes immediately
+        element.offsetHeight;
+        
+        // Re-enable transition for box-shadow only
+        element.style.transition = 'box-shadow 0.2s ease';
+        
         offsetX = touch.clientX - rect.left;
         offsetY = touch.clientY - rect.top;
         
         element.classList.add('dragging');
         header.style.cursor = 'grabbing';
         element.style.zIndex = getHighestZIndex() + 1;
-        
-        element.style.transform = 'none';
-        element.style.left = rect.left + 'px';
-        element.style.top = rect.top + 'px';
         
         e.preventDefault();
     }
