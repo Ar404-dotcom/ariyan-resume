@@ -43,7 +43,8 @@ body {
 .desktop-shortcuts {
     position: absolute;
     top: 18px;
-    left: 110px; /* keep clear of the left sidebar */
+    left: 110px;
+    /* keep clear of the left sidebar */
     display: flex;
     flex-direction: column;
     gap: 14px;
@@ -191,6 +192,7 @@ body {
         opacity: 0;
         transform: translate(-50%, -48%) scale(0.98);
     }
+
     to {
         opacity: 1;
         transform: translate(-50%, -50%) scale(1);
@@ -468,10 +470,13 @@ body {
 }
 
 @keyframes loadingDots {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: scale(0.3);
         opacity: 0.3;
     }
+
     50% {
         transform: scale(1);
         opacity: 1;
@@ -479,9 +484,12 @@ body {
 }
 
 @keyframes fadeInOut {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 0.3;
     }
+
     50% {
         opacity: 1;
     }
@@ -492,6 +500,7 @@ body {
         transform: translateY(20px);
         opacity: 0;
     }
+
     to {
         transform: translateY(0);
         opacity: 1;
@@ -502,15 +511,19 @@ body {
     0% {
         clip-path: polygon(0 0, 0 0, 0 0, 0 0);
     }
+
     25% {
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     }
+
     50% {
         clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%);
     }
+
     75% {
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     }
+
     100% {
         clip-path: polygon(0 0, 0 0, 0 0, 0 0);
     }
@@ -905,31 +918,38 @@ body {
 
 /* Vibrant Folder Icons */
 .icon i.fa-graduation-cap {
-    color: #FF4081 !important; /* Vibrant pink */
+    color: #FF4081 !important;
+    /* Vibrant pink */
 }
 
 .icon i.fa-project-diagram {
-    color: #00E5FF !important; /* Bright cyan */
+    color: #00E5FF !important;
+    /* Bright cyan */
 }
 
 .icon i.fa-tools {
-    color: #FFD700 !important; /* Gold */
+    color: #FFD700 !important;
+    /* Gold */
 }
 
 .icon i.fa-calculator {
-    color: #FFD700 !important; /* Gold */
+    color: #FFD700 !important;
+    /* Gold */
 }
 
 .icon i.fa-link {
-    color: #7C4DFF !important; /* Bright purple */
+    color: #7C4DFF !important;
+    /* Bright purple */
 }
 
 .icon i.fa-address-card {
-    color: #76FF03 !important; /* Bright green */
+    color: #76FF03 !important;
+    /* Bright green */
 }
 
 .icon i.fa-user {
-    color: #FF3D00 !important; /* Bright orange */
+    color: #FF3D00 !important;
+    /* Bright orange */
 }
 
 /* Make folder text more visible */
@@ -1105,14 +1125,37 @@ body {
 }
 
 /* Gmail uses red, Google uses blue */
-.social-app[title="Gmail"] i.fa-google { color: #EA4335; }
-.social-app[title="Google"] i.fa-google { color: #4285F4; }
-.social-app i.fa-instagram { color: #E4405F; }
-.social-app i.fa-twitter { color: #1DA1F2; }
-.social-app i.fa-chess { color: #7FA650; }
-.social-app i.fa-youtube { color: #FF0000; }
-.social-app i.fa-spotify { color: #1DB954; }
-.social-app i.fa-amazon { color: #FF9900; }
+.social-app[title="Gmail"] i.fa-google {
+    color: #EA4335;
+}
+
+.social-app[title="Google"] i.fa-google {
+    color: #4285F4;
+}
+
+.social-app i.fa-instagram {
+    color: #E4405F;
+}
+
+.social-app i.fa-twitter {
+    color: #1DA1F2;
+}
+
+.social-app i.fa-chess {
+    color: #7FA650;
+}
+
+.social-app i.fa-youtube {
+    color: #FF0000;
+}
+
+.social-app i.fa-spotify {
+    color: #1DB954;
+}
+
+.social-app i.fa-amazon {
+    color: #FF9900;
+}
 
 .social-app::after {
     content: attr(title);
@@ -1243,9 +1286,12 @@ body {
 }
 
 @keyframes weatherFloat {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0px);
     }
+
     50% {
         transform: translateY(-10px);
     }
@@ -1341,7 +1387,7 @@ body {
 /* Weather Background Variations */
 #weather-window.clear-bg {
     background: linear-gradient(135deg, rgba(251, 191, 36, 0.3), rgba(245, 158, 11, 0.3), rgba(234, 88, 12, 0.4)),
-                url('https://plus.unsplash.com/premium_photo-1680339680335-7e3b8572fc00?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjB8fHN1bW1lcnxlbnwwfHwwfHx8MA%3D%3D') !important;
+        url('https://plus.unsplash.com/premium_photo-1680339680335-7e3b8572fc00?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjB8fHN1bW1lcnxlbnwwfHwwfHx8MA%3D%3D') !important;
     background-size: cover !important;
     background-position: center !important;
 }
@@ -1386,7 +1432,7 @@ body {
 
 #weather-window.rainy-bg {
     background: linear-gradient(135deg, rgba(30, 41, 59, 0.5), rgba(15, 23, 42, 0.5), rgba(2, 6, 23, 0.6)),
-                url('https://images.unsplash.com/photo-1567688993206-43c34131b21f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') !important;
+        url('https://images.unsplash.com/photo-1567688993206-43c34131b21f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') !important;
     background-size: cover !important;
     background-position: center !important;
 }
@@ -1406,7 +1452,7 @@ body {
 
 #weather-window.snowy-bg {
     background: linear-gradient(135deg, rgba(224, 242, 254, 0.3), rgba(186, 230, 253, 0.3), rgba(147, 197, 253, 0.4)),
-                url('https://images.unsplash.com/photo-1455156218388-5e61b526818b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHdpbnRlcnxlbnwwfHwwfHx8MA%3D%3D') !important;
+        url('https://images.unsplash.com/photo-1455156218388-5e61b526818b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHdpbnRlcnxlbnwwfHwwfHx8MA%3D%3D') !important;
     background-size: cover !important;
     background-position: center !important;
 }
@@ -1431,15 +1477,20 @@ body {
 }
 
 @keyframes lightningFlash {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 1;
     }
+
     50% {
         opacity: 0.6;
     }
+
     55% {
         opacity: 1;
     }
+
     60% {
         opacity: 0.7;
     }
@@ -1621,12 +1672,14 @@ body {
 }
 
 /* Make weather widget and time-date clickable */
-.weather-widget, .time-date {
+.weather-widget,
+.time-date {
     cursor: pointer;
     transition: background-color 0.2s;
 }
 
-.weather-widget:hover, .time-date:hover {
+.weather-widget:hover,
+.time-date:hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -1719,15 +1772,23 @@ body {
         padding: 0 5px;
     }
 
-    #current-time, #current-date {
+    #current-time,
+    #current-date {
         font-size: 11px;
     }
 }
 
 /* Mobile Touch Improvements */
 @media (hover: none) and (pointer: coarse) {
-    .icon, .taskbar-item, .start-button, .search-box, .terminal-btn, .social-app {
-        min-height: 44px; /* Minimum touch target size */
+
+    .icon,
+    .taskbar-item,
+    .start-button,
+    .search-box,
+    .terminal-btn,
+    .social-app {
+        min-height: 44px;
+        /* Minimum touch target size */
         min-width: 44px;
     }
 
@@ -1735,7 +1796,9 @@ body {
         padding: 15px;
     }
 
-    .close-btn, .minimize-btn, .maximize-btn {
+    .close-btn,
+    .minimize-btn,
+    .maximize-btn {
         padding: 8px 12px;
         margin: 0 2px;
     }
@@ -1753,18 +1816,26 @@ body {
     }
 
     /* Improve scrolling on mobile */
-    .window-content, .terminal-content, .start-menu-items {
+    .window-content,
+    .terminal-content,
+    .start-menu-items {
         -webkit-overflow-scrolling: touch;
         scroll-behavior: smooth;
     }
 
     /* Remove hover effects on mobile */
-    .icon:hover, .taskbar-item:hover, .file:hover, .social-app:hover {
+    .icon:hover,
+    .taskbar-item:hover,
+    .file:hover,
+    .social-app:hover {
         transform: none;
     }
 
     /* Active states for touch */
-    .icon:active, .taskbar-item:active, .file:active, .social-app:active {
+    .icon:active,
+    .taskbar-item:active,
+    .file:active,
+    .social-app:active {
         background-color: rgba(255, 255, 255, 0.3);
         transform: scale(0.98);
     }
@@ -1843,7 +1914,8 @@ body {
     user-select: none;
 }
 
-input, textarea {
+input,
+textarea {
     -webkit-user-select: text;
     user-select: text;
 }
@@ -2193,7 +2265,8 @@ input, textarea {
     color: rgba(255, 255, 255, 0.9);
 }
 
-.guide-section ul, .guide-section ol {
+.guide-section ul,
+.guide-section ol {
     margin-left: 20px;
     margin-top: 10px;
     line-height: 1.8;
@@ -2364,4 +2437,625 @@ input, textarea {
 .resume-fallback p {
     color: rgba(255, 255, 255, 0.7);
     margin-bottom: 25px;
+}
+
+/* ===========================================
+   MOBILE RESPONSIVE STYLES
+   =========================================== */
+
+/* Tablet and smaller screens */
+@media screen and (max-width: 768px) {
+
+    /* Desktop icons sidebar - make narrower */
+    .desktop-icons {
+        width: 70px;
+        padding: 10px 5px;
+        gap: 5px;
+    }
+
+    .icon {
+        width: 55px;
+        min-height: 55px;
+        padding: 5px 3px;
+    }
+
+    .icon i {
+        font-size: 20px;
+        margin-bottom: 4px;
+    }
+
+    .icon span {
+        font-size: 9px;
+        max-width: 50px;
+    }
+
+    /* Desktop shortcuts - reposition */
+    .desktop-shortcuts {
+        left: 80px;
+        gap: 10px;
+    }
+
+    /* Windows - make responsive */
+    .window {
+        width: 90vw !important;
+        max-width: 90vw !important;
+        left: 50%;
+        min-width: unset;
+    }
+
+    .terminal {
+        width: 90vw !important;
+        height: 350px;
+    }
+
+    .calculator-window {
+        width: 300px !important;
+        max-width: 90vw !important;
+    }
+
+    .chess-window {
+        width: 95vw !important;
+    }
+
+    #chessboard {
+        width: 100% !important;
+        max-width: 350px;
+    }
+
+    .urlshortener-window {
+        width: 90vw !important;
+    }
+
+    .resume-window {
+        width: 95vw !important;
+        height: 80vh;
+    }
+
+    .resume-preview iframe {
+        width: 100%;
+        height: 100%;
+    }
+
+    /* Taskbar responsiveness */
+    .taskbar {
+        padding: 0 5px;
+    }
+
+    .search-box {
+        width: 120px;
+    }
+
+    .search-box input {
+        font-size: 11px;
+    }
+
+    .weather-widget {
+        padding: 0 8px;
+        margin-left: auto;
+    }
+
+    .weather-info {
+        display: flex;
+    }
+
+    .weather-temp {
+        font-size: 12px;
+    }
+
+    .weather-location {
+        font-size: 9px;
+    }
+
+    .time-date {
+        padding: 2px 8px;
+        margin-left: 5px;
+    }
+
+    #current-time {
+        font-size: 12px;
+    }
+
+    #current-date {
+        font-size: 10px;
+    }
+
+    /* Hide social media icons on tablet/mobile */
+    .social-app {
+        display: none !important;
+    }
+
+    /* Hide terminal button to make space */
+    .terminal-btn {
+        display: none;
+    }
+
+    /* Start menu */
+    .start-menu {
+        width: 280px;
+    }
+
+    /* Notepad responsive */
+    .notepad-content {
+        flex-direction: column;
+    }
+
+    .notepad-sidebar {
+        width: 100%;
+        max-height: 120px;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .notepad-toolbar {
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    .notepad-btn {
+        padding: 6px 10px;
+        font-size: 11px;
+    }
+
+    /* Resume toolbar */
+    .resume-toolbar {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 8px;
+        gap: 8px;
+    }
+
+    .resume-btn {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    /* Weather window */
+    .weather-details-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* Window content */
+    .window-content {
+        max-height: 60vh;
+    }
+
+    .howtouse-content {
+        padding: 15px !important;
+    }
+
+    .guide-section {
+        padding: 12px;
+    }
+}
+
+/* Small mobile screens */
+@media screen and (max-width: 480px) {
+
+    /* Desktop icons - hide sidebar, show as bottom bar or floating */
+    .desktop-icons {
+        position: fixed;
+        bottom: 48px;
+        left: 0;
+        right: 0;
+        top: auto;
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 8px;
+        gap: 5px;
+        max-height: 150px;
+        overflow-y: auto;
+        border-right: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        z-index: 100;
+    }
+
+    .icon {
+        width: 60px;
+        min-height: 50px;
+        padding: 5px;
+    }
+
+    .icon i {
+        font-size: 18px;
+        margin-bottom: 3px;
+    }
+
+    .icon span {
+        font-size: 8px;
+        max-width: 55px;
+    }
+
+    /* Desktop shortcuts - hide on very small screens or reposition */
+    .desktop-shortcuts {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 8px;
+        z-index: 50;
+    }
+
+    .desktop-shortcut {
+        width: 50px;
+        min-height: 50px;
+    }
+
+    /* Windows - full width on mobile */
+    .window {
+        width: 100vw !important;
+        max-width: 100vw !important;
+        left: 50% !important;
+        border-radius: 10px 10px 0 0;
+        max-height: 70vh;
+    }
+
+    .window-content {
+        max-height: 55vh;
+        padding: 12px;
+    }
+
+    .terminal {
+        width: 100vw !important;
+        height: 300px;
+    }
+
+    .calculator-window {
+        width: 95vw !important;
+    }
+
+    .calc-btn {
+        height: 40px;
+        font-size: 14px;
+    }
+
+    .calc-display input {
+        height: 48px;
+        font-size: 22px;
+    }
+
+    .chess-window {
+        width: 100vw !important;
+    }
+
+    #chessboard {
+        max-width: 300px;
+    }
+
+    /* Taskbar - simplify for mobile */
+    .taskbar {
+        height: 48px;
+        padding: 0 5px;
+    }
+
+    /* Hide search box on small mobile */
+    .search-box {
+        display: none;
+    }
+
+    .start-button {
+        width: 36px;
+        height: 36px;
+    }
+
+    .start-button i {
+        font-size: 16px;
+    }
+
+    .taskbar-item {
+        padding: 0 6px;
+    }
+
+    /* Hide terminal button on mobile */
+    .terminal-btn {
+        display: none;
+    }
+
+    /* Hide social media icons on mobile */
+    .social-app {
+        display: none !important;
+    }
+
+    /* Weather widget - show prominently */
+    .weather-widget {
+        padding: 0 8px;
+        margin-left: auto;
+        flex-shrink: 0;
+    }
+
+    .weather-widget i {
+        font-size: 16px;
+    }
+
+    .weather-info {
+        display: flex;
+    }
+
+    .weather-temp {
+        font-size: 11px;
+    }
+
+    .weather-location {
+        font-size: 8px;
+    }
+
+    /* Time date - show prominently */
+    .time-date {
+        padding: 2px 8px;
+        flex-shrink: 0;
+    }
+
+    #current-time {
+        font-size: 11px;
+    }
+
+    #current-date {
+        font-size: 9px;
+    }
+
+    /* Start menu - full width */
+    .start-menu {
+        width: 100%;
+        left: 0;
+        right: 0;
+        border-radius: 8px 8px 0 0;
+    }
+
+    /* Notepad adjustments */
+    .notepad-content {
+        flex-direction: column;
+    }
+
+    .notepad-sidebar {
+        width: 100%;
+        max-height: 100px;
+    }
+
+    .notepad-toolbar {
+        flex-wrap: wrap;
+        gap: 4px;
+        padding: 8px;
+    }
+
+    .notepad-btn {
+        padding: 5px 8px;
+        font-size: 10px;
+        flex: 1 1 auto;
+        min-width: fit-content;
+    }
+
+    #notepad-textarea {
+        min-height: 150px;
+    }
+
+    /* Resume window mobile */
+    .resume-window {
+        width: 100vw !important;
+        height: 75vh;
+    }
+
+    .resume-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 6px;
+        gap: 6px;
+    }
+
+    .resume-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    .resume-preview {
+        padding: 5px;
+    }
+
+    .resume-preview iframe {
+        width: 100%;
+        height: 100%;
+    }
+
+    /* URL Shortener mobile */
+    .urlshortener-window {
+        width: 100vw !important;
+    }
+
+    .url-actions {
+        flex-direction: column;
+    }
+
+    .url-btn {
+        width: 100%;
+    }
+
+    /* Weather window */
+    .weather-details-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .weather-hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .weather-main-display {
+        flex-direction: column;
+    }
+
+    .temperature-value {
+        font-size: 48px;
+    }
+
+    /* How to use guide */
+    .how-to-use-window {
+        width: 100vw !important;
+    }
+
+    .howtouse-content {
+        padding: 10px !important;
+    }
+
+    .guide-section {
+        padding: 10px;
+        margin-bottom: 12px;
+    }
+
+    .guide-section h3 {
+        font-size: 14px;
+    }
+
+    .guide-section p,
+    .guide-section li {
+        font-size: 12px;
+    }
+
+    .guide-section code {
+        font-size: 11px;
+        padding: 2px 5px;
+    }
+
+    /* File items */
+    .file {
+        padding: 10px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .file i {
+        margin-bottom: 8px;
+        margin-right: 0;
+    }
+
+    .file-content h3 {
+        font-size: 14px;
+    }
+
+    .file-content p {
+        font-size: 12px;
+    }
+
+    /* Clock window */
+    .clock-details {
+        padding: 15px;
+    }
+
+    .digital-clock {
+        font-size: 32px;
+    }
+
+    .time-zones {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* Loading screen mobile */
+    .windows-logo {
+        width: 100px;
+        height: 100px;
+    }
+
+    .windows-logo::before {
+        width: 70px;
+        height: 70px;
+    }
+
+    .loading-text {
+        font-size: 18px;
+    }
+
+    .author-name {
+        font-size: 24px;
+    }
+
+    /* Window header */
+    .window-header {
+        padding: 10px;
+    }
+
+    .window-header span {
+        font-size: 13px;
+    }
+
+    .close-btn {
+        font-size: 18px;
+        padding: 0 4px;
+    }
+
+    /* Terminal input mobile */
+    .terminal-input-line {
+        flex-wrap: wrap;
+    }
+
+    .prompt {
+        font-size: 12px;
+    }
+
+    .terminal-input {
+        font-size: 14px;
+    }
+
+    /* Search results */
+    .search-results {
+        width: calc(100vw - 20px);
+        left: 10px;
+        right: 10px;
+        max-height: 250px;
+    }
+}
+
+/* Extra small screens */
+@media screen and (max-width: 360px) {
+    .desktop-icons {
+        max-height: 130px;
+    }
+
+    .icon {
+        width: 50px;
+        min-height: 45px;
+    }
+
+    .search-box {
+        display: none;
+    }
+
+    .taskbar-left {
+        gap: 4px;
+    }
+
+    .window-header span {
+        font-size: 12px;
+        max-width: 150px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+/* Landscape mobile orientation */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .desktop-icons {
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 48px;
+        width: 60px;
+        height: auto;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        overflow-y: auto;
+    }
+
+    .window {
+        max-height: 80vh;
+    }
+
+    .window-content {
+        max-height: 60vh;
+    }
 }
