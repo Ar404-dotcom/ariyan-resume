@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,10 +9,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css">
 </head>
+
 <body>
     <!-- Loading Screen -->
     <div class="loading-screen">
-        <div class="windows-logo"></div>
+        <img class="loading-gif"
+            src="https://cdn.dribbble.com/userupload/42146377/file/original-5db0bb5bde5120cb0292c95f5e5dd104.gif"
+            alt="Loading animation">
         <div class="loading-text">Loading</div>
         <div class="loading-dots">
             <div class="dot"></div>
@@ -86,9 +90,12 @@
                     <div class="file-content">
                         <h3>Ariyan Roy</h3>
                         <p>Full Stack Developer</p>
-                        <p>I’m a Computer Science student at VIT-AP, passionate about exploring data and uncovering insights. I’ve worked
-                            with SQL and R for data analytics, and I also have experience in web development and Retrieval-Augmented
-                            Generation (RAG). I enjoy learning new technologies and applying them to solve meaningful problems.</p>
+                        <p>I’m a Computer Science student at VIT-AP, passionate about exploring data and uncovering
+                            insights. I’ve worked
+                            with SQL and R for data analytics, and I also have experience in web development and
+                            Retrieval-Augmented
+                            Generation (RAG). I enjoy learning new technologies and applying them to solve meaningful
+                            problems.</p>
                     </div>
                 </div>
             </div>
@@ -137,7 +144,8 @@
                     <i class="fas fa-robot"></i>
                     <div class="file-content">
                         <h3>AI Medical Chatbot With RAG</h3>
-                        <p>A chatbot that can analyze and respond to user queries related to medical conditions and treatments</p>
+                        <p>A chatbot that can analyze and respond to user queries related to medical conditions and
+                            treatments</p>
                     </div>
                 </div>
                 <div class="file">
@@ -239,10 +247,11 @@
             </div>
             <div class="window-content howtouse-content">
                 <h2 style="color:#60a5fa;margin-bottom:20px;">📖 Windows Resume - User Guide</h2>
-                
+
                 <div class="guide-section">
                     <h3><i class="fas fa-desktop"></i> Desktop Icons</h3>
-                    <p>Click any icon to open the corresponding window. Icons include About Me, Academics, Projects, Tech Stack, Links, Contact, and Notepad.</p>
+                    <p>Click any icon to open the corresponding window. Icons include About Me, Academics, Projects,
+                        Tech Stack, Links, Contact, and Notepad.</p>
                 </div>
 
                 <div class="guide-section">
@@ -302,17 +311,21 @@
 
                 <div class="guide-section">
                     <h3><i class="fas fa-cloud-sun"></i> Weather Widget</h3>
-                    <p>Click the weather widget in the taskbar to see detailed weather information including temperature, humidity, wind speed, and cloud cover. Background changes based on weather conditions!</p>
+                    <p>Click the weather widget in the taskbar to see detailed weather information including
+                        temperature, humidity, wind speed, and cloud cover. Background changes based on weather
+                        conditions!</p>
                 </div>
 
                 <div class="guide-section">
                     <h3><i class="fas fa-clock"></i> Clock Widget</h3>
-                    <p>Click the time/date in the taskbar to see detailed clock information with UTC and local time zones.</p>
+                    <p>Click the time/date in the taskbar to see detailed clock information with UTC and local time
+                        zones.</p>
                 </div>
 
                 <div class="guide-section">
                     <h3><i class="fas fa-search"></i> Search Box</h3>
-                    <p>Use the search box in the taskbar to quickly find folders, apps, and social links. Just start typing!</p>
+                    <p>Use the search box in the taskbar to quickly find folders, apps, and social links. Just start
+                        typing!</p>
                 </div>
 
                 <div class="guide-section">
@@ -326,7 +339,8 @@
                     </ul>
                 </div>
 
-                <div class="guide-section" style="background:rgba(96,165,250,0.1);padding:15px;border-radius:10px;border:1px solid rgba(96,165,250,0.3);">
+                <div class="guide-section"
+                    style="background:rgba(96,165,250,0.1);padding:15px;border-radius:10px;border:1px solid rgba(96,165,250,0.3);">
                     <h3><i class="fas fa-lightbulb"></i> Pro Tips</h3>
                     <ul>
                         <li>Create folders with <code>mkdir</code> - they appear as desktop icons!</li>
@@ -380,7 +394,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="weather-details-grid">
                     <div class="weather-card">
                         <div class="card-icon">
@@ -391,7 +405,7 @@
                             <div class="card-value" id="weather-feels-like">--°C</div>
                         </div>
                     </div>
-                    
+
                     <div class="weather-card">
                         <div class="card-icon">
                             <i class="fas fa-tint"></i>
@@ -401,7 +415,7 @@
                             <div class="card-value" id="weather-humidity">--%</div>
                         </div>
                     </div>
-                    
+
                     <div class="weather-card">
                         <div class="card-icon">
                             <i class="fas fa-wind"></i>
@@ -411,7 +425,7 @@
                             <div class="card-value" id="weather-wind">-- km/h</div>
                         </div>
                     </div>
-                    
+
                     <div class="weather-card">
                         <div class="card-icon">
                             <i class="fas fa-cloud"></i>
@@ -444,11 +458,17 @@
                     <div class="notepad-toolbar">
                         <button class="notepad-btn" id="notepad-new"><i class="fas fa-file"></i> New</button>
                         <button class="notepad-btn" id="notepad-save"><i class="fas fa-save"></i> Save</button>
-                        <button class="notepad-btn" id="notepad-savetxt"><i class="fas fa-folder-plus"></i> Save to txt</button>
-                        <button class="notepad-btn" id="notepad-download"><i class="fas fa-download"></i> Download</button>
+                        <button class="notepad-btn" id="notepad-savetxt"><i class="fas fa-folder-plus"></i> Save to
+                            txt</button>
+                        <button class="notepad-btn" id="notepad-download"><i class="fas fa-download"></i>
+                            Download</button>
                         <button class="notepad-btn" id="notepad-clear"><i class="fas fa-eraser"></i> Clear</button>
-                        <button class="notepad-btn" id="notepad-encode" style="background:rgba(34,197,94,0.2);border-color:rgba(34,197,94,0.3);"><i class="fas fa-code"></i> Encode Huffman</button>
-                        <button class="notepad-btn" id="notepad-decode" style="background:rgba(251,191,36,0.2);border-color:rgba(251,191,36,0.3);"><i class="fas fa-lock-open"></i> Decode Huffman</button>
+                        <button class="notepad-btn" id="notepad-encode"
+                            style="background:rgba(34,197,94,0.2);border-color:rgba(34,197,94,0.3);"><i
+                                class="fas fa-code"></i> Encode Huffman</button>
+                        <button class="notepad-btn" id="notepad-decode"
+                            style="background:rgba(251,191,36,0.2);border-color:rgba(251,191,36,0.3);"><i
+                                class="fas fa-lock-open"></i> Decode Huffman</button>
                         <span class="notepad-status" id="notepad-status"></span>
                     </div>
                     <textarea id="notepad-textarea" placeholder="Start typing..."></textarea>
@@ -524,7 +544,8 @@
                     </button>
                     <div class="url-input-group">
                         <label for="url-short-output">Short URL:</label>
-                        <input type="text" id="url-short-output" readonly placeholder="Your short URL will appear here" />
+                        <input type="text" id="url-short-output" readonly
+                            placeholder="Your short URL will appear here" />
                     </div>
                     <div class="url-actions">
                         <button id="url-copy-btn" class="url-btn url-success" disabled>
@@ -674,10 +695,12 @@
                         <li><strong>Write</strong> - Type your text in the main textarea</li>
                         <li><strong>New Button</strong> - Create a new blank note</li>
                         <li><strong>Save Button</strong> - Auto-saves to browser session (temporary)</li>
-                        <li><strong>Save to txt Button</strong> - Save to the virtual txt folder (accessible via terminal)</li>
+                        <li><strong>Save to txt Button</strong> - Save to the virtual txt folder (accessible via
+                            terminal)</li>
                         <li><strong>Download Button</strong> - Download the note as a .txt file to your computer</li>
                         <li><strong>Clear Button</strong> - Remove all content</li>
-                        <li><strong>Saved Files Sidebar</strong> - View and click on previously saved txt files to load them</li>
+                        <li><strong>Saved Files Sidebar</strong> - View and click on previously saved txt files to load
+                            them</li>
                     </ul>
                 </div>
 
@@ -691,7 +714,7 @@
                         <li>The folder window opens automatically where you can write text</li>
                         <li>Click "Save to txt folder" to save the content</li>
                     </ol>
-                    
+
                     <p><strong>Accessing Saved Files:</strong></p>
                     <ol>
                         <li>In terminal, type: <code>cd txt</code></li>
@@ -711,9 +734,11 @@
                         <li><strong>Humidity</strong> - Current humidity percentage</li>
                         <li><strong>Wind Speed</strong> - Wind speed in km/h</li>
                         <li><strong>Weather Description</strong> - Clear, Cloudy, Rainy, Snowy, Stormy, or Foggy</li>
-                        <li><strong>Animated Icons</strong> - Weather icons with animations (floating, lightning for storms)</li>
+                        <li><strong>Animated Icons</strong> - Weather icons with animations (floating, lightning for
+                            storms)</li>
                     </ul>
-                    <p class="note-box">Weather data updates automatically based on your location using Open-Meteo API</p>
+                    <p class="note-box">Weather data updates automatically based on your location using Open-Meteo API
+                    </p>
                 </div>
 
                 <div class="guide-section">
@@ -721,7 +746,8 @@
                     <p><strong>Important Note:</strong></p>
                     <div class="warning-box">
                         <i class="fas fa-exclamation-triangle"></i>
-                        <p>All data (folders, text files, notepad content) is stored temporarily using <strong>sessionStorage</strong>.</p>
+                        <p>All data (folders, text files, notepad content) is stored temporarily using
+                            <strong>sessionStorage</strong>.</p>
                         <p>This means:</p>
                         <ul>
                             <li>✅ Data persists while browser tab is open</li>
@@ -729,7 +755,8 @@
                             <li>❌ Clears when you close the browser tab</li>
                             <li>❌ Not shared between different tabs</li>
                         </ul>
-                        <p><strong>To permanently save:</strong> Use the "Download" button in Notepad to save files to your computer.</p>
+                        <p><strong>To permanently save:</strong> Use the "Download" button in Notepad to save files to
+                            your computer.</p>
                     </div>
                 </div>
 
@@ -831,4 +858,5 @@
     <script src="huffmanService.js"></script>
     <script src="script.js"></script>
 </body>
-</html> 
+
+</html>

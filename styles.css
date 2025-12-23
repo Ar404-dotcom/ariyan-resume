@@ -402,25 +402,15 @@ body {
     pointer-events: none;
 }
 
-.windows-logo {
-    width: 150px;
-    height: 150px;
-    margin-bottom: 30px;
-    position: relative;
-    z-index: 1;
-}
-
-.windows-logo::before {
-    content: '';
+/* Loading GIF - Fullscreen */
+.loading-gif {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100px;
-    height: 100px;
-    background: #ffffff;
-    transform: translate(-50%, -50%);
-    animation: windowsLogo 3s ease infinite;
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: 0;
 }
 
 .loading-text {
